@@ -1,0 +1,239 @@
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat'); */
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+html,body{
+    margin: 0;
+    padding: 0;
+}
+.wallpaper{
+    top:0;
+    left:0;
+    right:0; 
+    bottom:0;
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    z-index: -1;
+    position: fixed;
+}
+
+nav{
+    position: relative;
+    border-bottom: 1px solid darkgray;
+}
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+nav ul li{
+    width: 120px;
+    text-align: center;
+    /* border: 1px solid black; */
+    padding: 5px 5px;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+nav ul li a{
+    display:block;
+    text-decoration: none;
+    font-family: Calibri;
+    font-size: 20px;
+    color: black;
+}
+.absolute{
+    position: absolute;
+}
+.relative{
+    position: relative;
+}
+.welcome{
+    /* border:1px solid black; */
+}
+h1{
+    font-family: 'Nunito', sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+}
+#box-welcome > p{
+    font-family:Arial, sans-serif;
+    font-size: 20px;
+}
+.home-img{
+    background: url(static/fullstack3.png) no-repeat;
+    background-size: cover;
+    height: 400px;
+    width: 600px;
+}
+.form-login{
+    top:35%;
+    left:50%;
+    height: 40%;
+    transform: translate(-50%,-50%);
+}
+.form-group{
+    width: 300px;
+    padding: 8px 10px;
+    margin:10px;
+    border:2px solid lightblue;
+    outline: none;
+    background: transparent;
+    border-radius: 50px;
+    font-size: 15px;
+}
+.btn{
+    padding: 8px 20px;
+    font-size:15px;
+    background:transparent;
+    cursor: pointer;
+    font-weight: bold;
+    /* border-radius: 25px; */
+    margin-top:10px;
+    transition: 0.5s;
+}
+.sub-btn{
+    border:2px solid royalblue;
+    color:royalblue;
+}
+.del-btn{
+    border:2px solid red;
+    color:red;
+}
+.fix-btn{
+    border:2px solid forestgreen;
+    color:forestgreen;
+}
+.box-create{
+    width: 70%;
+}
+.form-create{
+    width: 90%;
+    padding: 8px 10px;
+    border:1px solid darkgray;
+    font-family: Calibri;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.text-area{
+    width: 90%;
+    padding: 10px 10px;
+    height: 300px;
+    resize: none;
+    margin-bottom: 20px;
+}
+.good{
+    display: block;
+    width: 400px;
+    background: lightgreen;
+    border: 1px solid lightgreen;
+    text-align: center;
+    padding: 5px 0px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.post-box{
+    margin: 2%;
+    width: 40%;
+    border:1px solid darkgray;
+}
+.post-box > .title{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    /* font-weight: bold; */
+    padding: 2% 2%;
+}
+.post-box > .created-at{
+    font-family: Calibri;
+    font-size: 15px;
+    padding: 0px 2% 2% 2%;
+    font-style: italic;
+}
+.post-box > .content{
+    font-family: Calibri;
+    font-size: 15px;
+    padding: 0px 2% 2% 2%;
+}
+.title > a{
+    text-decoration: none;
+    color: black;
+}
+.title > a:hover{
+    color: dodgerblue;
+}
+.page-btn-box{
+    text-align: center;
+}
+.page-btn-box a{
+    display: inline-block;
+    border: 1px solid darkgray;
+    text-decoration: none;
+    color: black;
+    padding: 0px 6px;
+    margin: 4px;
+    background:white;
+}
+.single-post{
+    /* border:1px solid black; */
+    padding: 2% 5%;
+    z-index: -1;
+}
+.single-post h2{
+    font-size: 40px;
+}
+.single-post > p{
+    font-size: 18px;
+    font-family: Calibri;
+}
+.box-delete{
+    top:40%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border:1px solid black;
+    background:white;
+    padding: 3% 3%;
+}
+.box-reg{
+    top:30%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    margin-top:2%;
+}
+.item-reg{
+    font-family:Calibri;
+    font-size: 20px;
+    font-weight: 100;
+}
+.form-reg{
+    width: 500px;
+    padding: 5px 10px;
+    border: 2px solid lightskyblue;
+    outline: none;
+    font-size: 20px;
+    background:transparent;
+    border-radius: 50px;
+}
+.form-reg:focus{
+    background: white;
+}
+.form-reg::placeholder{
+    color:rgba(169, 169, 169, 0.7);
+}
+.list-box{
+    margin: 2%;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th,td{
+    border: 1px solid darkgray;
+    font-family: Calibri;
+    font-size: 115%;
+    padding: 5px;
+}
+.box-btn-update{
+    top:6%;
+}
