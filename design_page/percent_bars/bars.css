@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+html,body{
+  margin: 0;
+  padding: 0;
+  /* background: #262626; */
+  background: url('river.jpg') no-repeat;
+  background-size: cover;
+}
+.glass{
+  position: absolute;
+  top: 0;left:0;right: 0;bottom: 0;
+  background: rgba(0,0,0,0.3);
+}
+.box{
+  position: absolute;
+  /* border: 1px solid white; */
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 70%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.5s;
+}
+.box:hover{
+  box-shadow: 4px 5px 25px rgba(255,255,255,0.5);
+  transition: 0.5s;
+}
+.box > .title{
+  position: relative;
+  /* border: 1px solid black; */
+  margin: 5%;
+}
+.title > p{
+  font-family: 'Pacifico', cursive;
+  font-size: 8vh;
+  color: white;
+  text-shadow: 4px 5px 5px #000;
+  display: inline;
+  /* float: left; */
+  animation: blur 1s;
+}
+@keyframes blur{
+  0%{
+    filter: blur(15px);
+  }
+  100%{
+    filter: blur(0px);
+  }
+}
+.container{
+  position: relative;
+  /* border: 1px solid black; */
+  width: 80%;
+  margin-bottom: 25px;
+}
+.container > p{
+  letter-spacing: 1px;
+  font-family: 'Source Code Pro';
+  font-weight: bold;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 4px 5px 5px #000;
+}
+.container > p:nth-child(2){
+  float: right;
+}
+.full-bar{
+  position: relative;
+  border: 1px solid black;
+  width: 100%;
+  margin-top: 1%;
+}
+.fill-bar{
+  margin: 3px 5px;
+  height: 10px;
+  width:0%;
+  background: black;
+}

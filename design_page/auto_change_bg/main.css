@@ -1,0 +1,66 @@
+html,body{
+    padding: 0; margin: 0;
+}
+.f-bg{
+    top: 0; left:0; right: 0; bottom: 0;
+    background: url('lake1.jpg') no-repeat;
+    background-size: cover;
+    /* opacity: 0; */
+}
+.bg{
+    top: 0; left:0; right: 0; bottom: 0;
+}
+.frame{
+    top: 0; left:0; right: 0; bottom: 0;
+}
+::placeholder{
+    color: rgba(255, 255, 255, 0.7);
+}
+.abs{
+    position: absolute;
+}
+.relate{
+    position: relative;
+}
+.black-glass{
+    top:0; left:0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+}
+.icon{
+    font-size: 90px; padding: 2%; 
+    height: 120px;
+    width: 120px;
+    background: url("cloud.png") no-repeat;
+    background-size: contain;
+}
+.lg-box{
+    top:50%; left:50%;
+    transform: translate(-50%,-50%); width: 30%; height: 70%;
+    /* background: rgba(255, 255, 255, 0.2); */
+    animation: move-down 1s;
+}
+.input{
+    margin: 3%; padding: 2% 3%; outline: none; font-family: monospace; font-size: 105%;
+    font-weight: 500;
+    width: 70%;
+    border: none; border-bottom: 1px solid black; 
+    color: white;
+    background: transparent; 
+}
+.input:focus{
+    border-bottom: 1px solid white;
+}
+.submit{
+    margin-top: 6%; padding: 3% 2%; outline: none; 
+    font-weight: bold;
+    width: 50%; border: none; 
+    color: white; 
+    background: rgba(0,0,0,0.7); border-radius: 25px;
+    cursor: pointer; transition: 0.5s;
+}
+.submit:hover{
+    background: rgba(255, 0, 0, 0.8); color: black;
+}
+.sink{
+    z-index: -1;
+}

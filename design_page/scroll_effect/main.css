@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+html, body{
+    margin: 0; padding: 0;
+}
+.scroll{
+    position: relative;
+    text-align: center;
+    /* border:1px  solid yellow; */
+}
+.scroll h1{
+    font-family: 'Pacifico', cursive;
+    font-size: 55px;
+    margin:30%;
+}
+.wallpp{
+    position: relative;
+    text-align: center;
+    /* height: 100vh; */
+    /* border: 1px solid black; */
+}
+img{
+    margin-top: 50px;
+    opacity: 0;
+}
+.mat{
+    animation: fade-in 0.5s;
+    animation-fill-mode: forwards;
+}
+.hien{
+    animation: fade-out 1.5s;
+    animation-fill-mode: forwards;
+}
+@keyframes fade-in{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes fade-out{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

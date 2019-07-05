@@ -1,0 +1,52 @@
+body,html{
+  padding: 0;
+  margin: 0;
+}
+.container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.b1{
+  position: absolute;
+  top:10%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 25px;
+  padding: 15px 25px;
+  margin: 30px;
+  cursor: pointer;
+  border: 2px solid black;
+  background: white;
+  outline: none;
+  overflow: hidden;
+}
+.b1 span{
+  color: #fff;
+  mix-blend-mode: difference;
+}
+.b1::before{
+  content: '';
+  position: absolute;
+  top:0;
+  left:-40%;
+  height: 100%;
+  width: 40px;
+  background: black;
+  transition: .5s;
+  transform: skewX(-15deg);
+}
+.b1:hover::before{
+  animation: move 1s infinite;
+}
+@keyframes move{
+  0%{
+    left: -40%
+  }
+  100%{
+    left: 100%;
+  }
+}

@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+body, html{
+  padding: 0;
+  margin:0;
+  background: black;
+}
+
+.neon{
+  font-family: 'Pacifico', cursive;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  color: white;
+  font-size: 15vh;
+  text-shadow: 0px 0px 20px royalblue;
+  animation: blink 2s infinite;
+  letter-spacing: 15px;
+}
+.neon::before{
+  position: absolute;
+  content: attr(data-text);
+  color: royalblue;
+  filter: blur(15px);
+  z-index: -1;
+}
+.neon::after{
+  position: absolute;
+  top:0; left:0;
+  content: "";
+  background: royalblue;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  filter: blur(40px);
+  opacity: .5;
+}
+@keyframes blink{
+  0%,12%,16%{
+    opacity: 1;
+  }
+  10%,14%{
+    opacity: 0;
+  }
+  /* 100%{
+    opacity: 0;
+  } */
+}

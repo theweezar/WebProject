@@ -1,0 +1,44 @@
+html,body{
+  margin: 0;
+  padding: 0;
+}
+.bg-black{
+  position: absolute;
+  top:0; left:0; right:0; bottom: 0;
+  background: black;
+  /* z-index: -1; */
+}
+.full{
+  left:0; right:0;
+}
+.container-1{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.item-frame{
+  position: absolute;
+  top: 0; height: 100%; width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btn{
+  position: absolute;
+  color: white;
+  font-size: 5vh;
+  padding: 10px 25px;
+  bottom: 2%; 
+  border: 2px solid white;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+}
+.next{
+  right:2%;
+}
+.pre{
+  left: 2%;
+}
