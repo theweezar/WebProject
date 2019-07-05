@@ -1,0 +1,47 @@
+html,body{
+    padding: 0;
+    margin: 0;
+}
+.wallpaper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(snow_mount.png) no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+canvas{
+    /* border:1px solid black; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.1);
+}
+.box-tool{
+    position: relative;
+    height: 300px;
+    /* border: 1px solid black; */
+}
+.clock{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    /* box-shadow: 5px 5px 45px #000000; */
+}
+.hm{
+    position: relative;
+    font-size: 700%;
+    color:white;
+    font-family:Calibri;
+}
+.second{
+    position: relative;
+    font-size: 200%;
+    color:white;
+    font-family:Calibri;
+}

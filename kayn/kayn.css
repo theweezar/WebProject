@@ -1,0 +1,145 @@
+body{
+    background: url(kayn1.png) no-repeat fixed;
+    background-size: cover;
+}
+.blackglass{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+}
+.box{
+    position: relative;
+    /* border: 1px solid white; */
+}
+.header{
+    height: 25%;
+    width: 300px;
+    padding: 30px 0px;
+    text-align: center;
+    border-bottom: 2px solid darkgoldenrod; 
+}
+.boxname-1{
+    color:darkgoldenrod;
+    font-size: 70px;
+}
+.nick{
+    color:darkgray;
+    font-size: 30px;
+}
+.story{
+    padding: 20px 30px;
+    background: rgba(0,0,0,0.3);
+    animation: fade 2s;
+    font-family: Calibri;
+}
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.content{
+    padding: 0px 100px;
+}
+.content p{
+    color: darkgray;
+    font-size:18px;
+    font-style: italic;
+    font-weight: bold;
+}
+.barrier{
+    height: 50px;
+    width: 500px;
+    padding-top:30px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color:goldenrod;
+    border-top:2px solid rgba(218, 165, 32, 0.7);
+    font-family: Calibri;
+}
+.icon{
+    width: 500px;
+    padding: 20px 20px;
+}
+.left{
+    float:left;
+}
+.right{
+    float:right;
+}
+.skill{
+    color: white;
+    height: 500px;
+    display: none;
+    animation: fade 2s;
+}
+.skillcontent{
+    position: absolute;
+    width: 50%;
+    padding: 30px;
+    border: 1px solid white;
+    transform: translate(-90%,-50%);
+    transition: 1s;
+}
+img{
+    border:2px solid darkgray;
+}
+.pos{
+    left:50%;
+    top:50%;
+}
+.skillcontent:hover{
+    box-shadow: 5px 5px 40px darkgray;
+    background: rgba(0,0,0,0.5);
+    
+}
+.skillname{
+    font-size:25px;
+    color: goldenrod;
+    font-weight: bold;
+    font-family: Arial;
+    margin-top:10px;
+}
+.describe{
+    margin-top:10px;
+    font-size:20px;
+    color: rgba(172, 157, 157, 0.8);
+    font-family: Calibri;
+}
+.skillvideo{
+    position: absolute;
+    transform: translate(15%,-50%);
+    border:3px solid darkgray;
+}
+.show{
+    display: block;
+}
+.gameplay{
+    border:5px solid goldenrod;
+    margin-top:20px;
+}
+.highlight{
+    border:2px solid orange;
+}
+.starter{
+    text-align: center;
+    color: darkgray;
+    font-size: 25px;
+    font-family: Calibri;
+}
+table{
+    width: 50%;
+    border-collapse: collapse;
+}
+th{
+    border: 1px solid white;
+}
+td{
+    border: 1px solid white;
+}

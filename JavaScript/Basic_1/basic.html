@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Javascript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="basic.css" />
+    <script src="basic.js"></script>
+    <script src="fun.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="box-form-1">
+        <h1>Vẽ hình chữ nhật</h1>
+        <div>
+            <input id="rong" class="form-group" placeholder="Width" type="text" value="">
+        </div>
+        <div>
+            <input id="dai" class="form-group" placeholder="Height" type="text" value="">
+        </div>
+        <div>
+            <button onclick="draw()" id="sub" class="btn" type="submit">Run</button>
+        </div>
+    </div>
+    <div class="box-draw">
+        <div id="hcn" class="hcn"></div>
+    </div>
+    <script>
+        function draw(){
+            var rong = document.getElementById("rong");
+            var dai = document.getElementById("dai");
+            var hcn = document.getElementById("hcn");
+            $("#hcn").attr("style","width:"+rong.value+"px"+";height:"+dai.value+"px");
+        }
+    </script>
+    <div class="box-2">
+        <div>
+            <button onclick="alert_()" type="submit" class="btn">Alert</button>
+            <button onclick="confirm_()" class="btn">Confirm</button>
+            <button onclick="prompt_()" class="btn">Prompt</button>
+            <button onclick="move_around()" class="btn">Change Ball Pos</button>
+        </div>
+        <div id="box_ball" class="box-3">
+            <!-- <div id="ball" class="size"></div> -->
+        </div>
+        <div class="box-clock">
+            <div id="hh" class="time"></div>
+            <div id="mm" class="time"></div>
+            <div id="ss" class="time"></div>
+        </div>
+        <script>
+            // window.onload = move_around();
+            // function move_around(){
+            //     var ball=document.getElementById("ball");
+            //     var x= Math.floor((Math.random() * 450) + 100) + "px";
+            //     var y= Math.floor((Math.random() * 450) + 100) + "px"; 
+            //     $("#ball").attr("style","transform: translate("+x+","+y+");transition: ease-in-out 1s;");
+            //     // animation: fade 1s;transition: ease-in-out 1s;
+            // }
+            // var amount = 0,
+            //     TheBall=[],
+            //     x_pos = null,
+            //     y_pos = null;
+            // function Ball(){
+            //     this.create_ball = function(i){
+            //         var Bdiv = document.createElement("div");
+            //         Bdiv.className = "size";
+            //         Bdiv.id = "ball-"+i;
+            //         var contain = document.getElementById("box_ball");
+            //         contain.appendChild(Bdiv);
+            //         console.log(contain);
+            //     }
+            //     this.update = function(){
+            //         x_pos = Math.floor((Math.random() * 600) + 50)+"px";
+            //         y_pos = Math.floor((Math.random() * 500) + 50)+"px";
+            //     }
+            //     this.draw = function(i){
+            //         $("#ball-"+i).attr("style","transform: translate("+x_pos+","+y_pos+");transition:1s;");
+            //     }
+            // }
+            // var b = new Ball();
+            // var c = new Ball();
+            // b.create_ball(1);
+            // c.create_ball(2);
+            // var i = 0, temp = 1;
+            // function animate(){
+            //     i++;
+            //     if (i==1) i=0;
+            //     b.update();
+            //     b.draw(1);
+            //     c.update();
+            //     c.draw(2);
+            //     if( i < temp ){
+            //         setTimeout(animate,1000);
+            //         console.log(i);
+            //     }
+            // }
+            // animate();
+            function CurrentTime(){
+                var current = new Date();
+                var h = current.getHours(),
+                    m = current.getMinutes(),
+                    s = current.getSeconds();
+                if (m<10) m = "0"+m;
+                if (s<10) s = "0"+s;
+                document.getElementById("hh").innerText = h;
+                document.getElementById("mm").innerText = m;
+                document.getElementById("ss").innerText = s;
+                setTimeout(CurrentTime,1000);
+            }
+            CurrentTime();
+        </script>
+    </div>
+</body>
+</html>
