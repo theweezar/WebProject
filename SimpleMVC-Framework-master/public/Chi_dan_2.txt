@@ -1,0 +1,2 @@
+﻿file .htaccess trong dùng để Rewrite lại dòng URL theo từng tên mình sẽ đặt trong file Controller
+ví dụ: www.example.com/..../login/duc

@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+html,body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #e9ebee;
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+nav{
+    position: fixed;
+    /* border-right: 1px solid black; */
+    background-color: #001f3f;
+    width: 200px;
+    top:0;
+    left:0;
+    bottom: 0;
+}
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+nav ul li{
+    /* border:2px solid lightseagreen; */
+    margin: 10% 7%;
+    /* border-radius: 50px;  */
+}
+.left{
+    float: left;
+}
+.right{
+    float:right;
+}
+nav ul li a{
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+    color:white;
+    font-size: 20px;
+    text-align: center;
+}
+.light{
+    /* background: lightseagreen;
+    border:2px solid lightseagreen; */
+    color:yellow;
+}
+.view{
+    width: 85%;
+    /* border: 1px solid black; */
+    /* background-color: #e9ebee; */
+}
+.home-face{
+    text-align: center;
+}
+.box-login{
+    margin-top: 10%;
+    padding: 40px;
+}
+.form-group{
+    width: 300px;
+    padding: 10px 10px;
+    margin: 10px;
+    border: 2px solid darkgray;
+    background: transparent;
+    border-radius: 50px;
+    outline: none;
+}
+.sub-btn{
+    background: transparent;
+    border: 2px solid lightseagreen;
+    color:lightseagreen;
+    padding: 5px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.error{
+    padding: 5px 10px;
+    background: lightcoral;
+    border:1px solid red;
+    color: white;
+    width: 30%;
+}
+.box-post{
+    height: 200px;
+    /* border:1px solid black; */
+    margin:5% 0 5% 0; /* top right bottom left */
+}
+.left-content{
+    left:15%;
+}
+.right-content{
+    right:15%;
+}
+.ct{ /* Content */
+    border:1px solid black;
+    width: 25%;
+    height: 100%;
+    padding: 0px 30px;
+    background-color:white;
+}
+.ct > a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 15px 0px;
+    font-size: 150%;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    border-bottom:1px solid black;
+    height: 55%;
+}
+.ct > .created_at{
+    padding: 15px 0px;
+    font-family: Calibri;
+    font-style: italic;
+}
+.title{
+    font-family: monospace;
+    font-size:250%;
+    text-align: center;
+    padding: 5% 5%;
+}
+.content{
+    padding: 0% 5%;
+    font-family: Calibri;
+    font-size:125%;
+}
+.form-post{
+    width: 70%;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 125%;
+    font-family: Calibri;
+    outline: none;
+}
+.textarea-post{
+    margin:2% 0 2% 0;
+    width: 70%;
+    padding: 5px 11px;
+    resize: none;
+    font-size:110%;
+    outline: none;
+}
