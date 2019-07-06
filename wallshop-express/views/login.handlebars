@@ -1,0 +1,22 @@
+<form action="/login" method="POST">
+  {{!-- hành động submit sẽ tự động gắn 2 biến /login/ + username + password từ trên xuống dưới --}}
+  <div class='lg-box'>
+    <div class='brand'>WallShop</div>
+    <p>Login and post your best wallpaper</p>
+    <div class='ip-bar'>
+      <input placeholder="Username" required="required" type="text" name='username'>
+    </div>
+    <div class='ip-bar'>
+      <input placeholder="Password" required="required" type="password" name='password'>
+    </div>
+    <div class='check-box'>
+      <input type="checkbox" name="rememberme" value="">&nbsp;&nbsp;&nbsp;<p>Remember me</p>
+    </div>
+    <button class='btn' type="submit"><p>Login</p></button>
+  </div>
+</form>
+{{#if this.error}}
+<div class='error'>
+  <p>* Wrong password or username</p>
+</div>
+{{/if}}
