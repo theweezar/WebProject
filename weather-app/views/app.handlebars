@@ -1,6 +1,5 @@
-<p>{{data}}</p>
 
 <script>
-  var str = '{{data}}' ;
-  console.log(str);
+  var str = '{{data}}';
+  console.log(JSON.parse(str.replace(/&quot;/g,'"')));
 </script>
