@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 // const fs = require('fs');
-// const path = require('path');
+const path = require('path');
 const request = require('request');
 const fetch = require('node-fetch');
 const Bluebird = require('bluebird');
@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(express.static('public'));
 
 app.engine('handlebars', exphbs({defaultLayout:"main"}));
 app.set('view engine', 'handlebars');
@@ -39,6 +40,10 @@ app.get('/',(req,res) => {
   .then(rs => {
     res.render('app',{data:JSON.stringify(rs)});
   });
+});
+
+app.get('/favicon.ico',(req,res) => { // chữa lỗi get favicon.ico failed
+  res.end();
 });
 
 app.listen(PORT,() => {
