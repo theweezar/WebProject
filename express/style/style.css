@@ -66,9 +66,12 @@ ul li a{
   outline: none;
   margin: 2%;
 }
-.frame{
+.frame{ 
   width: 384px;
   height: 216px;
+  
+  /* width: 100%;
+  height: 100%; */
   /* border: 1px solid yellow; */
 }
 .bg-log-page{
