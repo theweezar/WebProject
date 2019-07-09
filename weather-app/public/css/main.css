@@ -1,0 +1,13 @@
+html,body{
+  padding: 0;
+  margin: 0;
+  /* background: yellow; */
+}
+
+.container{
+  position: relative;
+  border:1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

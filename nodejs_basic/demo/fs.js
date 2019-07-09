@@ -11,7 +11,7 @@ function CreateFolder(){
       if (err) throw err; // err là biến có sẵn dc khởi tạo trong hàm mkdir luôn, nếu có err thì nó sẽ quăng lên console
       else console.log("Folder Created...");
     }
-  )
+  );
 }
 
 function WriteSomething(data = ""){ // viết vào file - bằng cách đè chứ ko phải append
@@ -22,7 +22,7 @@ function WriteSomething(data = ""){ // viết vào file - bằng cách đè ch�
       if (err) throw err;
       else console.log("Data : "+data);
     }
-  )
+  );
 }
 
 function ReadFile(){ // đọc file
@@ -33,7 +33,7 @@ function ReadFile(){ // đọc file
       if (err) throw err;
       else console.log(data);
     }
-  )
+  );
 }
 
 // WriteSomething("What the fuck is this ?");

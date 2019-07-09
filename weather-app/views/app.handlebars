@@ -1,0 +1,25 @@
+<div class='container'>
+  <div id='place'></div>
+  <div id='date'></div>
+  <div id='degree'></div>
+  <div id='weather'></div>
+</div>
+
+{{!-- <h1>&#8451;</h1> --}}
+
+
+<script>
+  var text = '{{data}}';
+  const json = JSON.parse(text.replace(/&quot;/g,'"')); 
+  //replace tất cả phần tử có giá trị == &quot; thành dấu ' " ' chuyển text thành json
+  console.log(json);
+  const date = new Date();
+  const d = `${date.getDate()} - ${date.getMonth()} / ${date.getHours()} : ${date.getMinutes()}`;
+  const degree = `${(json.currently.temperature - 32) / 1.8}`;
+  document.getElementById('place').innerText = json.timezone.replace(/_/g,' ');
+  document.getElementById('date').innerText = d;
+  document.getElementById('degree').innerHTML = `${degree.slice(0,5)} &#8451`;
+  //{{!-- innerHTMl để load cái kí tự &#8451 --}}
+  {{!-- document.getElementById('weather').innerText =  --}}
+  
+</script>
