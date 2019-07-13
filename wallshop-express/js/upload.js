@@ -1,8 +1,3 @@
-function mediumSize(files){
-  if (files.size < 1024*1024*5) return true;
-  else return false;
-}
-
 function Resize(img = new Image()){
   let width = img.width;
   let height = img.height;
