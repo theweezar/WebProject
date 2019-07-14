@@ -37,17 +37,20 @@ function Game(){
   this.draw = () => {
     c.beginPath();
     c.fillStyle = "cornflowerblue";
+    // c.strokeStyle = "black";
     for(var y = 0; y < this.block.length; y++){
       for(var x = 0; x < this.block[y].length; x++){
         if (this.block[y][x] === 1){
           c.fillRect((this.x + x)*box,(this.y + y)*box,box,box);
+          // c.rect((this.x + x)*box,(this.y + y)*box,box,box);
+          // c.stroke();
         }
       }
     }
     c.closePath();
   }
   this.clear = () => {
-    c.clearRect(this.ox*box,this.oy*box,this.block[0].length*box,this.block.length*box);
+    c.clearRect(this.ox*box,this.oy*box,this.block[0].length*box,this.length_block_y()*box);
     this.ox = this.x; // old x, old y
     this.oy = this.y;
   }
@@ -75,7 +78,7 @@ function Game(){
   }
   this.merge_with_board = () => {
     let max_y = this.length_block_y();
-    if (this.y + max_y === height){
+    if (this.y + max_y === height || this.collision()){
       for(var y = 0; y < max_y; y++){
         for(var x = 0; x < this.block[y].length; x++){
           if (this.block[y][x] === 1){
@@ -90,7 +93,9 @@ function Game(){
     }
   }
   this.collision = () => {
-
+    let max_y = this.length_block_y();
+    if (board[this.y + max_y - 1][this.x + this.block[0].length - 1] === 1) return true;
+    else if (board[this.y + max_y - 1][this.x - this.block[0].length - 1] === 1) return true;
   }
   this.rotation = () => {
 
