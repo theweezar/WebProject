@@ -16,14 +16,22 @@ function InitBoard(){
   }
 }
 
-function Shape(){
+function Game(){
   this.block = [
-    [0,0,0],
+    [1,1,1],
     [0,1,0],
-    [1,1,1]
+    [0,0,0]
   ];
   this.x = 5;
   this.y = 1;
+  this.length_block_y = () => {
+    let len = 0;
+    for(var y = 0; y < this.block.length; y++){
+      if (this.block[y].some(p => {return p === 1})) len++; 
+      // hàm some sẽ return true : false nếu như có ít nhất phần tử hợp lệ với điều kiện
+    }
+    return len;
+  }
   this.ox = this.x; // old x, old y
   this.oy = this.y;
   this.draw = () => {
@@ -52,31 +60,47 @@ function Shape(){
   this.falldown = () => {
     this.y += 1;
   }
-  this.update = () => {
-    this.clear();
-    // this.falldown();
-    this.merge_with_board();
-    this.draw();
+  this.reset_block = () => {
+    this.x = this.ox = 5; this.y = this.oy = 0;
+  }
+  this.check_full_row = () => {
+    for(var y = board.length - 1; y >= 0; y-- ){
+      if ( board[y].every(pos => {return pos === 1}) ){ 
+        // nếu dòng nào full 1 thì nó sẽ return true
+        // cái return nó giống như là thằng nào === 1 thì nó return boolean về, áp dụng cho toàn bộ array
+        board[y].fill(0);
+        console.log("full row");
+      }
+    }
   }
   this.merge_with_board = () => {
-    if (this.y + this.block.length === height){
-      for(var y = 0; y < this.block.length; y++){
+    let max_y = this.length_block_y();
+    if (this.y + max_y === height){
+      for(var y = 0; y < max_y; y++){
         for(var x = 0; x < this.block[y].length; x++){
           if (this.block[y][x] === 1){
-            
+            board[this.y + y][this.x + x] = 1;
           }
         }
       }
       console.log(`x = ${this.x} | y = ${this.y}`);
-      clearInterval(start);
+      console.log(board);
+      this.reset_block();
+      // clearInterval(start);
     }
   }
-}
+  this.collision = () => {
 
-function Game(){
-  this.shape = new Shape();
+  }
+  this.rotation = () => {
+
+  }
   this.run = () => {
-    this.shape.update();
+    this.clear();
+    // this.falldown();
+    this.draw();
+    this.merge_with_board();
+    this.check_full_row();
   }
 }
 
@@ -86,16 +110,16 @@ let game = new Game();
 window.addEventListener("keydown",(e)=>{
   switch (e.keyCode) {
     case 37: // left
-      game.shape.moveleft()
+      game.moveleft()
       break;
     case 38: // Up
       
       break;
     case 39: // Right
-      game.shape.moveright();
+      game.moveright();
       break;
     case 40: // Down
-      game.shape.falldown();
+      game.falldown();
       break;
     default:
       break;
