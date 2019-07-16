@@ -23,6 +23,7 @@ let sayHi = (Names = []) => { // ta truyền names là 1 mảng
 // Nhược điểm là nếu như code những chương trình lớn thì khi đọc code có thể hơi khó nhìn ra vì chữ nhiều
 
 function Example_String() {
+  console.log("                  String Part                   ");
   let str = "     Day la dau toi la ai ?     ";
   console.log("Example: "+str);
   console.log(`Split(' '):  ${str.split(" ")}`); // tách chuỗi theo điều kiện và nhét từng phần tử được tách vào 1 array
