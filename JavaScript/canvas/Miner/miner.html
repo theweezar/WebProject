@@ -9,6 +9,30 @@
     canvas{
       position: absolute;
     }
+    #infor{
+      position: absolute;
+      right: 10px;
+      border: 5px solid black;
+      height: 600px;
+      width: 400px;
+    }
+    #infor > p{
+      margin: 5%;
+      font-size: 25px;
+      border: 2px solid black;
+      padding: 10px 5px;
+      margin-top: 50px;
+    }
+    #infor > p > span{
+      color: red;
+    }
+    h1{
+      padding: 10px 25px;
+    }
+    .dead{
+      text-align: center;
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -18,6 +42,13 @@
   <!-- chướng ngại vật - obstacles -->
   <canvas id="cv3"></canvas>
   <!-- đá và thằng miner - stone and the miner guy -->
+  <div id="infor">
+    <p>Boom Detection:  <span id="boom-detect"></span> </p>
+    <p>Spike Detection: <span id="spike-detect"></span> </p>
+    <div>
+      <h1>Your HP: <span id="heart-infor"></span></h1>
+    </div>
+  </div>
   <script src="./miner.js"></script>
 </body>
 </html>

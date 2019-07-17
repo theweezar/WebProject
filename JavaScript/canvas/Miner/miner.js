@@ -5,14 +5,17 @@ const c1  = cv1.getContext("2d");
 const c2  = cv2.getContext("2d");
 const c3  = cv3.getContext("2d");
 
-cv1.width = cv2.width = cv3.width = 600;
-cv1.height = cv2.height = cv3.height =  400;
+cv1.width = cv2.width = cv3.width = 900;
+cv1.height = cv2.height = cv3.height =  600;
 
 let map = [], trapX = [], trapY = [] ;
 let start = undefined;
-const box = 20;
+const box = 30;
 const w = cv1.width / box; // 600 / 20 = 30
 const h = cv1.height / box; // 400 / 20 = 20
+const BoomDetect = document.getElementById("boom-detect");
+const SpikeDetect = document.getElementById("spike-detect");
+const HeartInfo = document.getElementById("heart-infor");
 // The item value
 const STONE = 0;
 const BOOM = 2; // the boom will kill you instanlly
@@ -106,6 +109,10 @@ function DrawTrap(){
   c2.closePath();
 }
 
+function DrawHeart(){
+  HeartInfo.innerText = 3;
+}
+
 function RemoveHeart(x=0,y=0){
   c2.clearRect(x*box,y*box,box,box);
 }
@@ -154,11 +161,14 @@ class MinerGame {
   }
 
   endGame(){
-    if (!this.alive) clearInterval(start);
+    if (!this.alive){
+      clearInterval(start);
+      document.getElementById("infor").innerHTML = "<h1 class='dead'>You are dead</h1>";
+    }
     else if (this.found_diamond) console.log("yeah");
   }
 
-  checkBoom(){
+  checkTrap(){
     if (this.checking){
       this.checking = false; // chỉ checking 1 lần cho 1 bước đi, nếu ko sẽ bị lag
       for(var i = 0; i < this.autoX.length; i++){
@@ -170,10 +180,10 @@ class MinerGame {
           if (check !== 0){
             switch(check){
               case BOOM:
-                console.log("BOOM is nearby");
+                BoomDetect.innerText = "BOOM is nearby";
                 break;
               case SPIKE:
-                console.log("SPIKE is nearby");
+                SpikeDetect.innerText = "Spikes is nearby";
                 break;
             }
           }
@@ -187,6 +197,8 @@ class MinerGame {
       switch(map[this.y][this.x]){
         case BOOM:
           this.alive = false;
+          this.resetPlatForm();
+          this.drawMiner();
           break;
         case SPIKE:
           this.heart -= 1;
@@ -194,6 +206,7 @@ class MinerGame {
           if (this.heart === 0) this.alive = false;
           else{
             let rand = Math.floor(Math.random()*(this.autoX.length - 0) + 0);
+            this.resetPlatForm();
             this.x += this.autoX[rand];
             this.y += this.autoY[rand];
             if (this.x < 0 || this.x > w - 1){
@@ -205,6 +218,7 @@ class MinerGame {
               this.y -= this.autoY[rand];
             }
           }
+          DrawHeart();
           break;
         case HEART:
           if (this.heart < 3){
@@ -213,6 +227,7 @@ class MinerGame {
             map[this.y][this.x] = 0;
             RemoveHeart(this.x,this.y);
           }
+          DrawHeart();
           break;
       }
     }
@@ -223,7 +238,7 @@ class MinerGame {
     this.drawMiner();
     this.endGame();
     this.control();
-    this.checkBoom();
+    this.checkTrap();
     this.touchTrap();
   };
 }
@@ -233,21 +248,30 @@ window.onload = () => {
   DrawGround();
   DrawTrap();
   DrawStone();
+  DrawHeart();
   let Game = new MinerGame();
   start = setInterval(Game.render,1);
   window.addEventListener("keydown",(e)=>{
     switch (e.keyCode) {
       case 37: // left
         Game.dx = -1; Game.checking = true;
+        BoomDetect.innerText = "";
+        SpikeDetect.innerText = "";
         break;
       case 38: // Up
         Game.dy = -1; Game.checking = true;
+        BoomDetect.innerText = "";
+        SpikeDetect.innerText = "";
         break;
       case 39: // Right
         Game.dx = 1; Game.checking = true;
+        BoomDetect.innerText = "";
+        SpikeDetect.innerText = "";
         break;
       case 40: // Down
         Game.dy = 1; Game.checking = true;
+        BoomDetect.innerText = "";
+        SpikeDetect.innerText = "";
         break;
     }
   });
