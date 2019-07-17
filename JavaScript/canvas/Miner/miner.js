@@ -131,6 +131,7 @@ class MinerGame {
     this.heart = 3;
     this.alive = true;
     this.found_diamond = false;
+    this.checking = true;
   }
 
   drawMiner(){
@@ -152,19 +153,58 @@ class MinerGame {
     this.dx = this.dy = 0;
   }
 
-  death(){
-    clearInterval(start);
+  endGame(){
+    if (!this.alive) clearInterval(start);
+    else if (this.found_diamond) console.log("yeah");
+  }
+
+  checkBoom(){
+    if (this.checking){
+      this.checking = false; // chỉ checking 1 lần cho 1 bước đi, nếu ko sẽ bị lag
+      for(var i = 0; i < this.autoX.length; i++){
+        // chạy vòng lặp ra xung quanh thằng miner theo 8 hướng - nếu hướng nào đó mà lọt ra ngoài map thì sẽ bỏ qua
+        let tmpX = this.x + this.autoX[i];
+        let tmpY = this.y + this.autoY[i];
+        if (tmpX >= 0 && tmpX < w && tmpY >= 0 && tmpY < h){
+          let check = map[tmpY][tmpX];
+          if (check !== 0){
+            switch(check){
+              case BOOM:
+                console.log("BOOM is nearby");
+                break;
+              case SPIKE:
+                console.log("SPIKE is nearby");
+                break;
+            }
+          }
+        }
+      }
+    }
   }
 
   touchTrap(){
     if (map[this.y][this.x] !== 0){
       switch(map[this.y][this.x]){
         case BOOM:
-          this.death();
+          this.alive = false;
           break;
         case SPIKE:
           this.heart -= 1;
-          if (this.heart === 0) this.death();
+          // if you touch the spike, you will lost 1 heart and auto move to random location
+          if (this.heart === 0) this.alive = false;
+          else{
+            let rand = Math.floor(Math.random()*(this.autoX.length - 0) + 0);
+            this.x += this.autoX[rand];
+            this.y += this.autoY[rand];
+            if (this.x < 0 || this.x > w - 1){
+              this.x = this.ox;
+              this.x -= this.autoX[rand];
+            }
+            if (this.y < 0 || this.y > h - 1){
+              this.y = this.oy;
+              this.y -= this.autoY[rand];
+            }
+          }
           break;
         case HEART:
           if (this.heart < 3){
@@ -181,7 +221,9 @@ class MinerGame {
   render = () => {
     this.resetPlatForm();
     this.drawMiner();
+    this.endGame();
     this.control();
+    this.checkBoom();
     this.touchTrap();
   };
 }
@@ -190,22 +232,22 @@ InitMap();
 window.onload = () => {
   DrawGround();
   DrawTrap();
-  // DrawStone();
+  DrawStone();
   let Game = new MinerGame();
   start = setInterval(Game.render,1);
   window.addEventListener("keydown",(e)=>{
     switch (e.keyCode) {
       case 37: // left
-        Game.dx = -1;
+        Game.dx = -1; Game.checking = true;
         break;
       case 38: // Up
-        Game.dy = -1;  
+        Game.dy = -1; Game.checking = true;
         break;
       case 39: // Right
-        Game.dx = 1;
+        Game.dx = 1; Game.checking = true;
         break;
       case 40: // Down
-        Game.dy = 1;
+        Game.dy = 1; Game.checking = true;
         break;
     }
   });
