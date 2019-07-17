@@ -5,9 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>MinerTime</title>
+  <style>
+    canvas{
+      position: absolute;
+    }
+  </style>
 </head>
 <body>
-  <canvas></canvas>
+  <canvas id="cv1"></canvas>
+  <!-- nền obsidian - background -->
+  <canvas id="cv2"></canvas>
+  <!-- chướng ngại vật - obstacles -->
+  <canvas id="cv3"></canvas>
+  <!-- đá và thằng miner - stone and the miner guy -->
   <script src="./miner.js"></script>
 </body>
 </html>
