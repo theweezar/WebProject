@@ -1,0 +1,32 @@
+canvas{
+  position: absolute;
+}
+#infor{
+  position: absolute;
+  right: 10px;
+  border: 5px solid black;
+  height: 600px;
+  width: 400px;
+}
+#infor > p{
+  margin: 3%;
+  font-size: 25px;
+  border: 2px solid black;
+  padding: 10px 5px;
+}
+#infor > p:nth-child(1){
+  margin-top: 15%;
+}
+#infor > p > span{
+  color: red;
+}
+h1{
+  padding: 10px 25px;
+}
+.heart{
+  margin: 0 10px 0 10px;
+}
+.dead{
+  text-align: center;
+  color: red;
+}

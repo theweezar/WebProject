@@ -1,6 +1,6 @@
-const cv1 = document.getElementById("cv1");
-const cv2 = document.getElementById("cv2");
-const cv3 = document.getElementById("cv3");
+const cv1 = document.getElementById("cv1"); // The base ground
+const cv2 = document.getElementById("cv2"); // All the Trap
+const cv3 = document.getElementById("cv3"); // Stone and the Miner guy
 const c1  = cv1.getContext("2d");
 const c2  = cv2.getContext("2d");
 const c3  = cv3.getContext("2d");
@@ -62,15 +62,17 @@ function InitMap(){
   Diamond.src = "diamond.png";
   Ground.src = "obsidian.png";
   // Create COORD for trap
-  for(var i = 0; i < 3; i++){
+  for(var i = 0; i < 5; i++){
     trapX = trapX.concat(Make_A_Random_Array(w));
     trapY = trapY.concat(Make_A_Random_Array(h));
   }
-  
-  // Add trap in the map
+  // Add trap and 1 Diamond in the map
   for(var i = 0; i < trapY.length; i++){
     map[trapY[i]][trapX[i]] = Math.floor(Math.random()*(4+1-2)+2); // Random COORD + Random Traps
   }
+  let DiamondX = Math.floor(Math.random()*(w - 0) + 0);
+  let DiamondY = Math.floor(Math.random()*(h - 0) + 0);
+  map[DiamondY][DiamondX] = DIAMOND;
   // ================== //
   console.log(map);
   console.log(trapX);
@@ -102,6 +104,9 @@ function DrawTrap(){
           case HEART:
             c2.drawImage(Heart,x * box,y * box,box,box);
             break;
+          case DIAMOND:
+            c2.drawImage(Diamond,x * box,y * box,box,box);
+            break;
         }
       }
     }
@@ -109,9 +114,6 @@ function DrawTrap(){
   c2.closePath();
 }
 
-function DrawHeart(){
-  HeartInfo.innerText = 3;
-}
 
 function RemoveHeart(x=0,y=0){
   c2.clearRect(x*box,y*box,box,box);
@@ -130,8 +132,8 @@ function DrawStone(){
 // Class the Miner guy
 class MinerGame {
   constructor() {
-    this.x = 0; this.dx = 0; 
-    this.y = 0; this.dy = 0;
+    this.x = Math.floor(Math.random()*(w - 0) + 0); this.dx = 0; 
+    this.y = Math.floor(Math.random()*(h - 0) + 0); this.dy = 0;
     this.ox = this.x; this.oy = this.y;
     this.autoX = [1, 1,1,0, 0,-1,-1,-1]; // Áp dụng bài toán tương tự con mã đi tuần để tìm đường đi tiếp theo
     this.autoY = [1,-1,0,1,-1, 1,-1, 0]; // 
@@ -139,6 +141,21 @@ class MinerGame {
     this.alive = true;
     this.found_diamond = false;
     this.checking = true;
+    this.heart_element = `<img class='heart' src=${Heart.src} width='40' height='40'>`;
+  }
+
+  drawHeart(){
+    for(var i = 0; i < 3; i++){
+      HeartInfo.innerHTML += this.heart_element;
+    }
+  }
+
+  drawloseHeart(){
+    HeartInfo.innerHTML = HeartInfo.innerHTML.slice(0,HeartInfo.innerHTML.length - this.heart_element.length);
+  }
+
+  drawplusHeart(){
+    HeartInfo.innerHTML += this.heart_element;
   }
 
   drawMiner(){
@@ -163,9 +180,12 @@ class MinerGame {
   endGame(){
     if (!this.alive){
       clearInterval(start);
-      document.getElementById("infor").innerHTML = "<h1 class='dead'>You are dead</h1>";
+      document.getElementById("infor").innerHTML += "<h1 class='dead'>You are dead</h1>";
     }
-    else if (this.found_diamond) console.log("yeah");
+    else if (this.found_diamond){
+      clearInterval(start);
+      document.getElementById("infor").innerHTML += "<h1 class='dead'>You are win this game</h1>";
+    }
   }
 
   checkTrap(){
@@ -196,12 +216,13 @@ class MinerGame {
     if (map[this.y][this.x] !== 0){
       switch(map[this.y][this.x]){
         case BOOM:
-          this.alive = false;
+          this.alive = false; this.heart = 0;
+          HeartInfo.innerHTML = "";
           this.resetPlatForm();
           this.drawMiner();
           break;
         case SPIKE:
-          this.heart -= 1;
+          this.heart -= 1; this.drawloseHeart();
           // if you touch the spike, you will lost 1 heart and auto move to random location
           if (this.heart === 0) this.alive = false;
           else{
@@ -218,16 +239,20 @@ class MinerGame {
               this.y -= this.autoY[rand];
             }
           }
-          DrawHeart();
           break;
         case HEART:
           if (this.heart < 3){
-            this.heart += 1;
+            this.heart += 1; this.drawplusHeart();
             // The heart will disappear with you touch it - but when you are full HP, it won't
             map[this.y][this.x] = 0;
             RemoveHeart(this.x,this.y);
           }
           DrawHeart();
+          break;
+        case DIAMOND:
+          this.found_diamond = true;
+          this.resetPlatForm();
+          this.drawMiner();
           break;
       }
     }
@@ -248,8 +273,8 @@ window.onload = () => {
   DrawGround();
   DrawTrap();
   DrawStone();
-  DrawHeart();
   let Game = new MinerGame();
+  Game.drawHeart();
   start = setInterval(Game.render,1);
   window.addEventListener("keydown",(e)=>{
     switch (e.keyCode) {
