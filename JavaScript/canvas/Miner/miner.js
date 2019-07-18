@@ -180,11 +180,11 @@ class MinerGame {
   endGame(){
     if (!this.alive){
       clearInterval(start);
-      document.getElementById("infor").innerHTML += "<h1 class='dead'>You are dead</h1>";
+      document.getElementById("infor").innerHTML += "<h1 class='end'>You are dead</h1>";
     }
     else if (this.found_diamond){
       clearInterval(start);
-      document.getElementById("infor").innerHTML += "<h1 class='dead'>You are win this game</h1>";
+      document.getElementById("infor").innerHTML += "<h1 class='end'>You are win this game</h1>";
     }
   }
 
@@ -224,7 +224,11 @@ class MinerGame {
         case SPIKE:
           this.heart -= 1; this.drawloseHeart();
           // if you touch the spike, you will lost 1 heart and auto move to random location
-          if (this.heart === 0) this.alive = false;
+          if (this.heart === 0){
+            this.alive = false;
+            this.resetPlatForm();
+            this.drawMiner();
+          }
           else{
             let rand = Math.floor(Math.random()*(this.autoX.length - 0) + 0);
             this.resetPlatForm();
