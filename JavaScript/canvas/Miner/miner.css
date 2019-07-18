@@ -20,6 +20,9 @@ canvas{
 #infor > p > span{
   color: red;
 }
+#infor > h4{
+  padding-left: 5%;
+}
 h1{
   padding: 10px 25px;
 }
