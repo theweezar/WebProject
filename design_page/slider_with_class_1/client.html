@@ -23,7 +23,13 @@
       return components;
     }
     window.onload = () => {
-      let slider = new Slider("slide-show",InitComponents(),1,"next","previous");
+      const slider = new Slider({
+        parentNodeID:"slide-show",
+        nextBtnID:"next",
+        previousBtnID:"previous",
+        distance:1,
+        transition:0.5
+      },InitComponents());
       slider.render();
     }
   </script>

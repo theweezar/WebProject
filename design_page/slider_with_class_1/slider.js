@@ -7,13 +7,13 @@ class Slider{
    * This animation can't work without this 2 things
    * ClassName's group will be "group" and id will be "components.length / distance"
    */
-  constructor(parentNodeID = "",components=[],distance = 0,nextBtnID = "",previousBtnID = "",transition = 1){
-    this.parentNode = document.getElementById(`${parentNodeID}`);
+  constructor(attr = {parentNodeID:"",nextBtnID:"",previousBtnID:"",distance:1,transition:1},components=[]){
+    this.parentNode = document.getElementById(`${attr.parentNodeID}`);
+    this.distance = attr.distance < components.length ? attr.distance : components.length;
+    this.nextBtn = document.getElementById(`${attr.nextBtnID}`);
+    this.previousBtn = document.getElementById(`${attr.previousBtnID}`);
+    this.transition = attr.transition;
     this.components = components;
-    this.distance = distance < components.length ? distance : components.length;
-    this.nextBtn = document.getElementById(`${nextBtnID}`);
-    this.previousBtn = document.getElementById(`${previousBtnID}`);
-    this.transition = transition;
     this.click = true;
     this.current = 0;
   }
@@ -33,7 +33,6 @@ class Slider{
       this.parentNode.innerHTML += this.splitGroup(i);
     }
     this.nextBtn.addEventListener("click",() => {
-      console.log(`click and ${this.click}`);
       if(this.current + 1 < this.components.length / this.distance && this.click){
         document.querySelector(`#${this.parentNode.id} #g${this.current}`).setAttribute("style",`left:-100%; transition:${this.transition}s;`);
         document.querySelector(`#${this.parentNode.id} #g${++this.current}`).setAttribute("style",`left:0%; transition:${this.transition}s;`);
@@ -51,4 +50,3 @@ class Slider{
     });
   }
 }
-
