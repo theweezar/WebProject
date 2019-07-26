@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="./slider.js"></script>
+  <script type="text/javascript" src="./slider.js"></script>
   <link rel="stylesheet" href="./main.css">
   <title>SliderEffect</title>
 </head>
@@ -12,26 +12,6 @@
   <div id="slide-show"></div>
   <div class="btn" id="next">Next</div>
   <div class="btn" id="previous">Previous</div>
-  <script>
-    let colors = ["red","yellow","green","aqua","black","blue"];
-    function InitComponents(){
-      let components = [];
-      colors.forEach(color => {
-        let bg = `<div style="background: ${color};" class="slide"></div>`;
-        components.push(bg);
-      });
-      return components;
-    }
-    window.onload = () => {
-      const slider = new Slider({
-        parentNodeID:"slide-show",
-        nextBtnID:"next",
-        previousBtnID:"previous",
-        distance:1,
-        transition:0.5
-      },InitComponents());
-      slider.render();
-    }
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
