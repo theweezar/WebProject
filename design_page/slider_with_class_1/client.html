@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./slider.js"></script>
+  <link rel="stylesheet" href="./main.css">
+  <title>SliderEffect</title>
+</head>
+<body>
+  <div id="slide-show"></div>
+  <div class="btn" id="next">Next</div>
+  <div class="btn" id="previous">Previous</div>
+  <script>
+    let colors = ["red","yellow","green","aqua","black","blue"];
+    function InitComponents(){
+      let components = [];
+      colors.forEach(color => {
+        let bg = `<div style="background: ${color};" class="slide"></div>`;
+        components.push(bg);
+      });
+      return components;
+    }
+    window.onload = () => {
+      let slider = new Slider("slide-show",InitComponents(),1,"next","previous");
+      slider.render();
+    }
+  </script>
+</body>
+</html>
