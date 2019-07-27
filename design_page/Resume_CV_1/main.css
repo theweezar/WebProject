@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+/* font-family: 'Source Code Pro', monospace; */
 html,body{
   padding: 0;
   margin: 0;
@@ -12,7 +14,7 @@ h1{
   position: absolute;
   top:0;
   bottom:0;
-  width: 85%;
+  width: 60%;
   display: grid;
   grid-template-columns: 25% 75%;
 
@@ -41,12 +43,19 @@ h1{
   height: 100%;
   width: 100%;
 }
-.main-container .nav table td .item .active{
+.main-container .nav table td .item .bar{
   position: absolute;
   background: #d79922;
-  width: 100%;
   height: 100%;
   z-index: -1;
+  transition: 1s;
+}
+.main-container .nav table td .item .active{
+  animation: get-long 0.5s forwards;
+}
+@keyframes get-long{
+  0%{width:0%;}
+  100%{width:100%;}
 }
 .main-container .nav table td .item .item-infor{
   width: 100%;
@@ -60,6 +69,39 @@ h1{
   text-transform: uppercase;
 }
 .main-container .content-container{
+  position: relative;
   height: 100%;
-  background: lightblue;
+}
+.main-container .content-container .content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* background: brown; */
+  display: none;
+}
+.main-container .content-container .active{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-container .content-container .content .myname{
+  font-family: 'Source Code Pro', monospace;
+  margin: 100px 0 2% 0;
+  font-size: 250%;
+}
+.main-container .content-container .content .aboutme{
+  width: 60%;
+  text-align: center
+} 
+.main-container .content-container .content .aboutme p{
+  
+}
+.main-container .content-container .content .aboutme .underline{
+  width: 50px;
+  height: 10px;
+  background: #f5f54a;
+  margin-bottom: 20px;
+}
+.main-container .content-container .content .aboutme .abm-ct{
+  
 }
