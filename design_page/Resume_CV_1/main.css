@@ -1,0 +1,65 @@
+html,body{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1{
+  border:1px solid black;
+}
+.main-container{
+  position: absolute;
+  top:0;
+  bottom:0;
+  width: 85%;
+  display: grid;
+  grid-template-columns: 25% 75%;
+
+}
+.main-container .nav{
+  height: 100%;
+}
+.main-container .nav table{
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+}
+.main-container .nav table .avatar{
+  background: url(avatar.jpg) no-repeat;
+  background-size: contain;
+  background-position-x: center;
+}
+.main-container .nav table tr{
+  cursor: pointer;
+}
+.main-container .nav table td{
+  border: 1px solid #e0dede;
+}
+.main-container .nav table td .item{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.main-container .nav table td .item .active{
+  position: absolute;
+  background: #d79922;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.main-container .nav table td .item .item-infor{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-container .nav table td .item .item-infor .item-name{
+  text-transform: uppercase;
+}
+.main-container .content-container{
+  height: 100%;
+  background: lightblue;
+}
