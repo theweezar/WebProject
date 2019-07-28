@@ -12,7 +12,7 @@ html,body{
   height: 100%;
   background: url(/bg.jpg) no-repeat;
   background-size: cover;
-  filter: brightness(80%);
+  filter: brightness(55%);
 }
 .main-book{
   position: absolute;
@@ -21,7 +21,6 @@ html,body{
   transform: translate(-50%,-50%);
   width: 50%;
   height: 100%;
-  /* border-right: 1px solid black; */
   display: grid;
   grid-template-columns: 25% 75%;
 }
@@ -30,15 +29,22 @@ html,body{
   display: grid;
 }
 .main-book nav .item{
-  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
-.main-book nav .active{
-  background: rgb(63, 117, 218);
-  border: 1px solid rgb(63, 117, 218);
+#choose{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.8);
+  top: var(--offSetY);
+  z-index: -1;
+  transition: 0.35s;
 }
 .main-book nav .item .item-name{
   font-family: 'Pacifico', cursive;
@@ -66,15 +72,26 @@ html,body{
 .main-book .content-container .wallpp{
   position: absolute;
   height: 100%;
-  background: burlywood;
+  background: url(./girl.jpg) no-repeat;
+  background-size: cover;
   z-index: -1;
+  filter: brightness(30%);
 }
-.main-book .content-container .general{
+.main-book .content-container .show{
   /* Điểm chung */
   display: flex;
   height: 100%;
   flex-direction: column;
   font-family: 'Fira Sans', sans-serif;
+  opacity: 0;
+  animation: fade 0.5s forwards;
+}
+.main-book .content-container .block{
+  display: none; 
+}
+@keyframes fade{
+  0%{opacity: 0; transform: translateY(20px);}
+  100%{opacity: 1; transform: translateY(0);}
 }
 /* ============================ Home ============================= */
 .main-book .content-container .home-content{
@@ -86,9 +103,11 @@ html,body{
   font-size: 300%;
   text-transform: uppercase;
   text-align: center;
+  color: wheat;
 }
 .main-book .content-container .home-content .jobname{
   color: gray;
+  margin-top: 10px;
 }
 .main-book .content-container .home-content .by{
   position: absolute;
@@ -112,14 +131,24 @@ html,body{
 }
 .main-book .content-container .about-content .content{
   text-align: center;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
+  color: white;
+}
+.main-book .content-container .about-content ul{
+  margin: 0;
+  padding: 0;
+}
+.main-book .content-container .about-content ul li{
+  color: white;
+  margin-top: 15px;
 }
 /* ========================== Skill ================================= */
 .main-book .content-container .skill-content{
   padding:35px 35px 0 35px;
 }
 .main-book .content-container .skill-content .title{
-  border-bottom: 2px solid black;
+  color: wheat;
+  border-bottom: 2px solid wheat;
   width: 50%;
   padding-bottom: 10px;
   font-size: 150%;
@@ -132,14 +161,45 @@ html,body{
 }
 .main-book .content-container .skill-content .box .name{
   font-size: 120%;
-  color: aliceblue;
+  color: wheat;
 }
 .main-book .content-container .skill-content .percent{
   display: flex;
   align-items: center;
 }
 .main-book .content-container .skill-content .percent .pc-bar{
-  height: 40%;
+  height: 35%;
   width: 0;
-  background: black;
+  background: white;
+}
+/* =========================== Education ============================= */
+.main-book .content-container .education-content{
+  justify-content: center;
+  align-items: center;
+}
+.main-book .content-container .education-content h1{
+  color: wheat;
+}
+/* =========================== Contact =============================== */
+.main-book .content-container .contact-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 150%;
+  color: white;
+}
+a{
+  text-decoration: none;
+  outline: none;
+  font-weight: bold;
+}
+.main-book .content-container .contact-content div{
+  margin: 25px 0 25px 0;
+}
+.main-book .content-container .contact-content .facebook a{
+  color: lightseagreen;
+}
+.main-book .content-container .contact-content .instagram a{
+  color: brown;
 }

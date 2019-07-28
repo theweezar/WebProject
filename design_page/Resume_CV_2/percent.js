@@ -22,7 +22,7 @@ class Skill{
 }
 
 window.onload = () => {
-  let skill = new Skill("load-percent",[
+  let skill = new Skill("skill",[
     {name:"HTML5",percent:"70%"},
     {name:"CSS3",percent:"50%"},
     {name:"Javascript",percent:"60%"},

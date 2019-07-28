@@ -11,30 +11,31 @@
   <div class="wallpp"></div>
   <div class="main-book">
     <nav>
-      <div class="item active">
+      <div item-btn id="0" class="item">
+        <div id="choose"></div>
         <div class="item-name">Home</div>
       </div>
-      <div class="item">
+      <div item-btn id="1" class="item">
         <div class="item-name">About me</div>
       </div>
-      <div class="item">
+      <div item-btn id="2" class="item">
         <div class="item-name">Skill</div>
       </div>
-      <div class="item">
+      <div item-btn id="3" class="item">
         <div class="item-name">Education</div>
       </div>
-      <div class="item">
+      <div item-btn id="4" class="item">
         <div class="item-name">Contact</div>
       </div>
     </nav>
     <div class="content-container">
       <div class="wallpp"></div>
-      <div style="display: none" class="home-content general">
+      <div id="home" class="home-content show">
         <div class="name">Hoang phan minh duc</div>
         <div class="jobname">Web Design / Developer / Gamer</div>
         <div class="by">@ CV Template desiged by myself</div>
       </div>
-      <div style="display: none" class="about-content general">
+      <div id="about" class="about-content block">
         <div class="bar"></div>
         <div class="title">About</div>
         <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe sint repellendus iusto? Cupiditate amet accusantium in blanditiis, nostrum sint nam voluptatum aliquam fugiat enim expedita est laboriosam vero ea nesciunt.</div>
@@ -48,7 +49,7 @@
           <li>Make cake</li>
         </ul>
       </div>
-      <div style="display: none;" id="load-percent" class="skill-content general">
+      <div id="skill" class="skill-content block">
         <div class="title">Skill</div>
         <!-- <div class="box">
           <div class="name">Name</div>
@@ -57,10 +58,21 @@
           </div>
         </div> -->
       </div>
-      <div class="education-content general">
-
+      <div id="education" class="education-content block">
+        <h1>Not done yet</h1>
+      </div>
+      <div id="contact" class="contact-content block">
+        <div class="phone">+84935723714</div>
+        <div class="email">hpmduc3010@gmail.com</div>
+        <div class="facebook">
+          <a target="_blank" href="https://www.facebook.com/mduc3099">facebook.com/mduc3099</a>
+        </div>
+        <div class="instagram">
+          <a href="https://www.instagram.com/mduc301/" target="_blank" rel="noopener noreferrer">instagram.com/mduc301/</a>
+        </div>
       </div>
       <script src="percent.js"></script>
+      <script src="animation.js"></script>
     </div>
   </div>
 </body>
