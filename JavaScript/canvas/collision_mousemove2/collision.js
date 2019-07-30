@@ -1,7 +1,8 @@
 const cv = document.querySelector("canvas");
 const c  = cv.getContext("2d");
-const Length = 5;
+const Length = 3;
 const R = 30;
+let start;
 
 cv.width = 1000;
 cv.height = 600;
@@ -10,11 +11,42 @@ const Distance = (x1=0,y1=0,x2=0,y2=0) => {
   return Math.sqrt(Math.pow((x1-x2),2) + Math.pow((y1-y2),2));
 };
 
-const resolveCollision = (m1,u1,m2,u2) => {
-  // https://en.wikipedia.org/wiki/Elastic_collision
-  // m la khoi luong, u12 la` van toc ban dau
-  
+const rotate = (dx = 0, dy = 0, angle = 0) => {
+  // https://www.slideshare.net/VietTriEdu/cng-thc-php-quay-d-hiu
+  // Phep quay do thi
+  const dxNew = dx * Math.cos(angle) - dy * Math.sin(angle);
+  const dyNew = dx * Math.sin(angle) + dy * Math.sin(angle); // bug is here
+  return {dx:dxNew,dy:dyNew};
+};
 
+const resolveCollision = (thisBall = new Ball(), otherBall = new Ball()) => {
+  // https://en.wikipedia.org/wiki/Elastic_collision
+  // m là khối lượng, v là vận tốc
+  const xOffset = thisBall.x - otherBall.x;
+  const yOffset = thisBall.x - otherBall.y;
+  const dxOffset = thisBall.dx - otherBall.dx;
+  const dyOffset = thisBall.dy - otherBall.dy;
+
+  const PlusMass = thisBall.m + otherBall.m;
+  const MinusMass = thisBall.m - otherBall.m;
+
+  if (dxOffset * xOffset + dyOffset * yOffset >= 0){
+    const angle = Math.atan(yOffset / xOffset); // đối chia kề
+    const v1 = rotate(thisBall.dx,thisBall.dy,angle); // bug in rotate function
+    const v2 = rotate(otherBall.dx,otherBall.dy,angle);
+  
+    const v1_tmp = {dx: (MinusMass * v1.dx / PlusMass) + (2 * otherBall.m * v2.dx / PlusMass),dy:v1.dy};
+    const v2_tmp = {dx: (2 * thisBall.m * v1.dx / PlusMass) + (-MinusMass * v2.dx / PlusMass),dy:v2.dy};
+  
+    const v1Final = rotate(v1_tmp.dx,v1_tmp.dy,-angle); // new thisBall dx,dy
+    const v2Final = rotate(v2_tmp.dx,v2_tmp.dy,-angle); // new otherBall dx,dy
+  
+    thisBall.dx = v1Final.dx;
+    thisBall.dy = v1Final.dy;
+  
+    otherBall.dx = v2Final.dx;
+    otherBall.dy = v2Final.dy;
+  }
 };
 
 class Ball{
@@ -23,7 +55,7 @@ class Ball{
     this.y = y;
     this.dx = Math.random() * Math.floor(Math.random()*(8+1-3)+3);
     this.dy = Math.random() * Math.floor(Math.random()*(8+1-3)+3);
-    this.m = 1; // mass: khoi luong
+    this.m = 0.1; // mass: khoi luong
   }
 
   move = () => {
@@ -46,6 +78,8 @@ class Ball{
     Balls.forEach(ball => {
       if (Distance(this.x,this.y,ball.x,ball.y) <= R*2 && Distance(this.x,this.y,ball.x,ball.y) > 0){
         console.log("touch");
+        resolveCollision(this,ball);
+        // cancelAnimationFrame(start);
       }
     });
   }
@@ -79,7 +113,7 @@ function Init(){
 const Balls = Init();
 
 function animate(){
-  requestAnimationFrame(animate);
+  start = requestAnimationFrame(animate);
   c.clearRect(0,0,cv.width,cv.height);
   Balls.forEach(ball => {
     ball.render(Balls);
