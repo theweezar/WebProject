@@ -18,25 +18,11 @@ class Pendulum{
     this.l2 = 100;
     this.angle1 = -Math.PI/3;
     this.angle2 = Math.PI/6;
-    this.v1 = 0.01;
-    this.v2 = -0.001;
+    this.z1 = 0.01;
+    this.z2 = -0.001;
   }
-  calc_angle_vel(){
-    let n1 = -g * (2*this.m1 + this.m2) * Math.sin(this.angle1);
-    let n2 = this.m2 * g * Math.sin(this.angle1 - 2 * this.angle2);
-    let n3 = 2 * Math.sin(this.angle1 - this.angle2) * this.m2;
-    let n4 = Math.pow(this.v2,2) * this.l2 + Math.pow(this.v1,2) * this.l1 * Math.cos(this.angle1 - this.angle2);
-    let final_1 = (n1 - n2 - n3 * n4) / this.l1 * (2 * this.m1 + this.m2 - this.m2 * Math.cos(2 * this.angle1 - 2 * this.angle2));
+  calc_z(){
     
-    let m1 = 2 * Math.sin(this.angle1 - this.angle2);
-    let m2 = Math.pow(this.v1,2) * this.l1 *(this.m1 + this.m2);
-    let m3 = g * (this.m1 + this.m2) * Math.cos(this.angle1);
-    let m4 = Math.pow(this.v2,2) * this.l2 * this.m2 * Math.cos(this.angle1 - this.angle2);
-    let final_2 = m1 * (m2 + m3 + m4) / this.l2 * (2 * this.m1 + this.m2 - this.m2 * Math.cos(2 * this.angle1 - 2 * this.angle2));
-
-    this.v1 = final_1;
-    this.v2 = final_2;
-    console.log(`v1:${this.v1} and v2:${this.v2}`);
   }
   calcCoordXY1(){
     let dx = this.l1 * Math.sin(this.angle1);
@@ -82,7 +68,7 @@ class Pendulum{
   update(){
     this.angle1 += 0.1;
     this.angle2 += -0.1;
-    this.calc_angle_vel();
+    this.calc_z();
   }
   render(){
     this.calcCoordXY1();
@@ -98,7 +84,7 @@ class Pendulum{
 const pendulum = new Pendulum();
 
 function animate(){
-  let start = requestAnimationFrame(animate);
+  // let start = requestAnimationFrame(animate);
   ctx1.clearRect(0,0,allcanvas[0].width,allcanvas[0].height);
   pendulum.render();
   if (Math.abs(pendulum.v1) === Infinity && Math.abs(pendulum.v2) === Infinity) cancelAnimationFrame(start);
