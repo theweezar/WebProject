@@ -82,9 +82,7 @@ class Pendulum{
   update(){
     this.angle1 += 0.1;
     this.angle2 += -0.1;
-    // this.calc_angle_vel();
-    // this.angle1 = this.calc_angle_1();
-    // this.angle2 = this.calc_angel_2();
+    this.calc_angle_vel();
   }
   render(){
     this.calcCoordXY1();
@@ -100,8 +98,9 @@ class Pendulum{
 const pendulum = new Pendulum();
 
 function animate(){
-  // requestAnimationFrame(animate);
+  let start = requestAnimationFrame(animate);
   ctx1.clearRect(0,0,allcanvas[0].width,allcanvas[0].height);
   pendulum.render();
+  if (Math.abs(pendulum.v1) === Infinity && Math.abs(pendulum.v2) === Infinity) cancelAnimationFrame(start);
 }
 animate();
