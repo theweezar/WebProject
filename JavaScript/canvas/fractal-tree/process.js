@@ -7,7 +7,7 @@ class FractalTree{
   constructor(StartX=0,StartY=0) {
     this.startPoint = {x:StartX,y:StartY};
     this.offSetLength = 0.67;
-    this.offSetAngle = 31;
+    this.offSetAngle = 30;
     this.start();
   }
   newPoint(current = {x:0,y:0},length=0,angle=0){
@@ -30,10 +30,10 @@ class FractalTree{
 
     c.lineTo(point.x,point.y);
     c.stroke();
-    let nPoint = this.newPoint(point,length,-angle);
+    let nPoint = this.newPoint(point,length,-angle); // left
     this.drawBranch(nPoint,length * this.offSetLength, angle + this.offSetAngle);
 
-    c.moveTo(nPoint.x,nPoint.y);
+    c.moveTo(nPoint.x,nPoint.y); // right
     this.drawBranch(nPoint,length * this.offSetLength, angle - this.offSetAngle);
   }
   
