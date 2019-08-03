@@ -71,3 +71,7 @@ window.addEventListener("mousemove",e => {
   mouse.x = e.x;
   mouse.y = e.y;
 });
+
+window.addEventListener("click",() => {
+  spotList.push(new Spot());
+});
