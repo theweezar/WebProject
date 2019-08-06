@@ -28,7 +28,8 @@ window.onload = () => {
     {name:"Javascript",percent:"60%"},
     {name:"Nodejs",percent:"30%"},
     {name:"Java",percent:"35%"},
-    {name:"PHP",percent:"80%"}
+    {name:"PHP",percent:"80%"},
+    {name:"Python",percent:"77%"}
   ]);
   skill.render();
 }

@@ -174,11 +174,29 @@ html,body{
 }
 /* =========================== Education ============================= */
 .main-book .content-container .education-content{
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  display: block;
 }
 .main-book .content-container .education-content h1{
   color: wheat;
+}
+.main-book .content-container .education-content .edu-bar{
+  position: absolute;
+  height: 100%;
+  width: 1%;
+  background: wheat;
+  margin-left: 15px;
+}
+.main-book .content-container .education-content .edu-obj{
+  width: 100%;
+  padding-left: 8px;
+}
+.main-book .content-container .education-content .edu-obj .connect-dot{
+  width: 18px;
+  height: 18px;
+  background: yellow;
+  border-radius: 50px;
+
 }
 /* =========================== Contact =============================== */
 .main-book .content-container .contact-content{
