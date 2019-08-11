@@ -1,6 +1,6 @@
 <div class="container">
   <div class="container-todolist">
-    <div class="title">
+    <div class="header">
       <h1>Your things</h1>
       <p>Date</p>
     </div>
@@ -13,13 +13,26 @@
               <div class="checkbox"></div>
             </label>
           </div>
-          <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis officiis ab ullam aliquam? Inventore doloremque aut qui. Atque accusamus vel repellendus ipsam, eum animi dolores illo! Iure iusto nihil sapiente.</div>
+          <div class="content">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis officiis ab ullam aliquam? Inventore doloremque aut qui. Atque accusamus vel repellendus ipsam, eum animi dolores illo! Iure iusto nihil sapiente.
+            <div class="date">dd-mm-yyyy ( hh:mm )</div>
+          </div>
         </li>
       </ul>
     </div>
     <div class="add-btn-area">
-      <button id="add-btn">+</button>
+      <button id="add-btn">+ New Task</button>
     </div>
     <script src="js/todolist.js"></script>
+  </div>
+  <div class="container-addtask">
+    <div class="header">
+      <button id="back">Back</button>
+      <div>Something to do ?</div>
+    </div>
+    <center><textarea rows="10" placeholder="Your things"></textarea></center>
+    <div style="text-align: center;">
+      <button id="done">&#10004; Done</button>
+    </div>
   </div>
 </div>
