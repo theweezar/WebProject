@@ -81,11 +81,11 @@ html,body{
 .none{
   display: none;
 }
-.container-todolist .todo-list ul li .input-checkbox label input[type="checkbox"]:checked ~ div#checkbox {
+/* .container-todolist .todo-list ul li .input-checkbox label input[type="checkbox"]:checked ~ div#checkbox {
   background: rgb(20, 184, 69);
   border: 2px solid rgb(20, 184, 69);
   color:white;
-}
+} */
 .container-todolist .todo-list ul li .content{
   /* border: 1px solid black; */
   margin-top: 2px;

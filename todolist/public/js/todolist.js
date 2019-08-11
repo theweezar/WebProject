@@ -2,6 +2,22 @@ function validation(input = ""){
   if (input.trim() === "") return false;
   return true;
 }
+
+function addEvent(jqueryElement){
+  jqueryElement.on("click",function(){
+    if ($(this).attr("checked") === undefined){
+      $(this).children().eq(0).toggleClass("none");
+      $(this).parent().parent().next().css("text-decoration","line-through");
+      $(this).css({
+        background: "rgb(20, 184, 69)",
+        border: "2px solid rgb(20, 184, 69)",
+        color: "white"
+      });
+      $(this).attr("checked","");
+    }
+  });
+}
+
 $(function(){
   let amount = 0;
   $("#add-btn").on("click",function(){
@@ -34,14 +50,10 @@ $(function(){
       $("#todo-list").append(li);
       $(".container-addtask").css("left","100%");
       $("textarea").val("");
-      $(`#task-${amount-1}`).next().on("click",function(){ // phải add thêm event cho thằng mới vào
-        $(this).children().eq(0).toggleClass("none");
-      });
+      addEvent($(`#task-${amount-1}`).next());
     }
   });
-  $("div#checkbox").on("click",function(){
-    $(this).children().eq(0).toggleClass("none");
-  });
+  addEvent($("div#checkbox"));
 });
 
 // document.getElementById("checkbox")
