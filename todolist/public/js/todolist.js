@@ -1,21 +1,21 @@
-let amount = 0;
-
 function validation(input = ""){
-  if (input.length === 0) return false;
+  if (input.trim() === "") return false;
   return true;
 }
-
 $(function(){
+  let amount = 0;
   $("#add-btn").on("click",function(){
     $(".container-addtask").css("left","0%");
-  })
+  });
   $("#back").on("click",function(){
     $(".container-addtask").css("left","100%");
     $("textarea").val("");
-  })
+  });
   $("#done").on("click",function(){
     const todo = $("textarea").val();
-    if (!validation(todo)) alert("Please fill the blank !");
+    if (!validation(todo)){
+      // báo lỗi hay gì đó
+    }
     else{
       const date = new Date();
       const time = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()} ( ${date.getHours()}:${date.getMinutes()} )`;
@@ -23,7 +23,7 @@ $(function(){
                     <div class="input-checkbox">
                       <label for="task-${amount}">
                         <input type="checkbox" name="" id="task-${amount++}">
-                        <div class="checkbox"></div>
+                        <div id="checkbox"><span class="none">&#10004;</span></div>
                       </label>
                     </div>
                     <div class="content">
@@ -34,10 +34,14 @@ $(function(){
       $("#todo-list").append(li);
       $(".container-addtask").css("left","100%");
       $("textarea").val("");
+      $(`#task-${amount-1}`).next().on("click",function(){ // phải add thêm event cho thằng mới vào
+        $(this).children().eq(0).toggleClass("none");
+      });
     }
-  })
-  $(".checkbox").on("click",function(){
-    $(this).html("&#10004;");
-    $(this).parent().parent().parent().fadeOut(1000);
-  })
+  });
+  $("div#checkbox").on("click",function(){
+    $(this).children().eq(0).toggleClass("none");
+  });
 });
+
+// document.getElementById("checkbox")
