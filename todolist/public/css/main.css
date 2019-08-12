@@ -9,7 +9,8 @@ html,body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #B0E2FF;
+  /* background: #B0E2FF; */
+  background: #262626;
 }
 .container{
   position: relative;

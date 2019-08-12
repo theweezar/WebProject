@@ -30,10 +30,15 @@
       <div>Something to do ?</div>
     </div>
     <center><textarea rows="10" placeholder="Your things"></textarea></center>
-    <div style="text-align: center;">
-      <button id="done">&#10004; Done</button>
-    </div>
+    <form action="">
+      <div style="text-align: center;">
+        <button type="submit" id="done">&#10004; Done</button>
+      </div>
+    </form>
   </div>
 </div>
+<script>
+  const data_from_server = "{{this.note}}".replace(/&quot;/g,"'");
+</script>
+<script src="js/validation.js"></script>
 <script src="js/todolist.js"></script>
-<script src="js/socket_process.js"></script>
