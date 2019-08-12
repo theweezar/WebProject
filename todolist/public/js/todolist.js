@@ -47,7 +47,7 @@ $(function(){
       $("#todo-list").append(li);
       $(".container-addtask").css("left","100%");
       $("textarea").val("");
-      addEvent($(`#task-${amount-1}`).next());
+      addEvent($(`#task-${amount-1}`).next()); // cái này là cái checkbox
       // ========================== Socket Process ============================== //
       socket.emit("send note",{
         id: amount, // amount đã được ++ ở trên
@@ -57,7 +57,7 @@ $(function(){
       });
     }
   });
-  console.log(data_from_server);
+  // console.log(data_from_server);
   addEvent($("div#checkbox"));
 });
 
