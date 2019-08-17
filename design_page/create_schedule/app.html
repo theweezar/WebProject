@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CreateSchedule</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="./html2canvas.min.js"></script>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Thời gian</th>
+      <th>Thứ hai</th>
+      <th>Thứ ba</th>
+      <th>Thứ tư</th>
+      <th>Thứ năm</th>
+      <th>Thứ sáu</th>
+      <th>Thứ bảy</th>
+      <th>Chủ nhật</th>
+    </tr>
+    <tr>
+      <td id="time">
+        <p>Sáng</p>
+        <p>(6h - 12h)</p>
+      </td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+    </tr>
+    <tr>
+      <td id="time">
+        <p>Chiều</p>
+        <p>(12h - 17h)</p>
+      </td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+    </tr>
+    <tr>
+      <td id="time">
+        <p>Tối</p>
+        <p>(18h - 22h)</p>
+      </td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+      <td id="free"></td>
+    </tr>
+  </table>
+  <a id="capture">Capture</a>
+  <script>
+    window.onload = () => {
+      document.querySelectorAll("td#free").forEach(item => {
+        item.innerHTML = "Rãnh";
+        item.addEventListener("click",() => {
+          if (item.id === "free"){
+            item.setAttribute("id","busy");
+            item.innerHTML = "Đi học";
+          }
+          else{
+            item.setAttribute("id","free");
+            item.innerHTML = "Rãnh";
+          }
+        });
+      });
+      // document.getElementById("capture").addEventListener("click",function(){
+      //   let link = this;
+      //   html2canvas(document.querySelector("table")).then(canvas => {
+      //     // Capture
+      //     document.body.appendChild(canvas)
+      //     let image = canvas.toDataURL("image/jpg");
+      //     link.setAttribute("href",`${image}`);
+      //   });
+      // });
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+body,html{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "consolas";
+}
+
+table{
+  position: absolute;
+  top:45%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-collapse: collapse;
+}
+table th{
+  padding: 10px 15px;
+  border: 2px solid black;
+  width: 120px;
+}
+table td{
+  border: 2px solid black;
+  text-align: center;
+}
+table tr #time{
+  font-size: 110%;
+  font-weight: bold;
+}
+table tr #free{
+  cursor: pointer;
+  font-size: 150%;
+}
+table tr #busy{
+  cursor: pointer;
+  background: #262626;
+  color: white;
+  font-size: 150%;
+}
+#capture{
+  position: absolute;
+  top:85%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border: 2px solid black;
+  color: black;
+  padding: 12px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
