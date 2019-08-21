@@ -4,7 +4,7 @@ window.onload = () => {
     item.addEventListener("click",() => {
       if (item.id === "free"){
         item.setAttribute("id","busy");
-        item.innerHTML = "Đi học";
+        item.innerHTML = "Bận";
       }
       else{
         item.setAttribute("id","free");
