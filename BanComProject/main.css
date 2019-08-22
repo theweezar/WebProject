@@ -33,11 +33,10 @@ body{
   position: relative;
   display: grid;
   grid-template-columns: 75% 25%;
-  grid-template-rows: 84% 8% 8%;
+  grid-template-rows: 92% 8%;
   grid-template-areas: 
   "menu1 menu2"
-  "pagination pagination"
-  "program program";
+  "pagination pagination";
 }
 .operation .menu1{
   grid-area: menu1;
@@ -54,13 +53,17 @@ body{
 }
 .operation .menu2{
   grid-area: menu2;
-  background: wheat
+  background: wheat;
+}
+.operation .menu2 table{
+  width: 100%;
+  height: 100%;
+}
+.operation .menu2 table th{
+  border: 1px solid black;
+  width: 200px;
 }
 .operation .pagination{
   grid-area: pagination;
   background: brown;
-}
-.operation .program{
-  grid-area: program;
-  background: lime;
 }
