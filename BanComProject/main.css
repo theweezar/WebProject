@@ -1,0 +1,66 @@
+body,html{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+body{
+  display: grid;
+  grid-template-rows: 6% 94%
+}
+.header{
+  position: relative;
+  background: lightblue;
+}
+.header ul{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.header ul li{
+  display: inline-block;
+  text-align: center;
+}
+.header ul li:nth-child(2){
+  width: 80%;
+}
+.operation{
+  position: relative;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows: 84% 8% 8%;
+  grid-template-areas: 
+  "menu1 menu2"
+  "pagination pagination"
+  "program program";
+}
+.operation .menu1{
+  grid-area: menu1;
+  background: yellow;
+}
+.operation .menu1 table{
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+.operation .menu1 table th{
+  border: 1px solid black;
+  width: 200px;
+}
+.operation .menu2{
+  grid-area: menu2;
+  background: wheat
+}
+.operation .pagination{
+  grid-area: pagination;
+  background: brown;
+}
+.operation .program{
+  grid-area: program;
+  background: lime;
+}
