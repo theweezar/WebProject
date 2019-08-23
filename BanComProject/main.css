@@ -53,11 +53,17 @@ body{
 .operation .menu1 table{
   width: 100%;
   height: 100%;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
 }
 .operation .menu1 table th{
-  border: 1px solid black;
   width: 200px;
+  border: 1px solid black;
+}
+.operation .menu1 table #item{
+  font-weight: 100;
+  text-align: center;
+  border: 1px solid black;
+  cursor: pointer;
 }
 .operation .menu2{
   grid-area: menu2;
@@ -84,14 +90,15 @@ body{
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.5);
-  display: none;
+  /* display: none; */
 }
 #board{
   position: absolute;
   top:0;
-  right: -30%;
+  /* right: -30%; */
+  right: 0;
   height: 100%;
-  width: 25%;
+  width: 30%;
   background: whitesmoke;
   transition: 0.25s;
 }
