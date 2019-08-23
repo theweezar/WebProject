@@ -58,12 +58,14 @@ body{
 .operation .menu1 table th{
   width: 200px;
   border: 1px solid black;
+  text-transform: uppercase;
 }
 .operation .menu1 table #item{
   font-weight: 100;
   text-align: center;
   border: 1px solid black;
   cursor: pointer;
+  text-transform: capitalize;
 }
 .operation .menu2{
   grid-area: menu2;
@@ -101,4 +103,40 @@ body{
   width: 30%;
   background: whitesmoke;
   transition: 0.25s;
+  display: grid;
+  grid-template-rows: 7% 63% 30%;
+}
+#board .search-bar,.list-order,.all-infor{
+  border: 1px solid black;
+}
+#board .list-order ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+#board .list-order ul li{
+  width: 95%;
+  background: orange;
+  margin: 5px;
+}
+#board .list-order ul li .dish-infor{
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+#board .list-order ul li .dish-infor div:nth-child(1){
+  font-size: 20px;
+  width: 200px;
+  text-transform: uppercase;
+}
+#board .list-order ul li .dish-infor div:nth-child(2){
+  margin-top: 4px;
+  width: 150px;
+}
+#board .list-order ul li .dish-infor div:nth-child(3){
+  margin-top: 2px;
+  cursor: pointer;
 }
