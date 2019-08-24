@@ -106,7 +106,7 @@ body{
   display: grid;
   grid-template-rows: 7% 63% 30%;
 }
-#board .search-bar,.list-order,.all-infor{
+#board .list-order{
   border: 1px solid black;
 }
 #board .list-order ul{
