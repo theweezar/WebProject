@@ -6,13 +6,11 @@ body,html{
   font-family: 'Times New Roman', Times, serif;
 }
 .btn{
-  border: 2px solid black;
   color: black;
   padding: 12px 18px;
   border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
-  width: 70px;
   text-align: center;
 }
 #btn-school{
@@ -24,7 +22,9 @@ body,html{
 #btn-busy{
   position: absolute;
   top:5%;
-  left:15%;
+  left:5%;
+  border: 2px solid red;
+  color: red;
   /* border: 2px solid black; */
 }
 .choose{
@@ -56,9 +56,15 @@ table tr #free{
   cursor: pointer;
   font-size: 150%;
 }
-table tr #busy{
+table tr #study{
   cursor: pointer;
   background: #262626;
+  color: white;
+  font-size: 150%;
+}
+table tr #busy{
+  cursor: pointer;
+  background: red;
   color: white;
   font-size: 150%;
 }
@@ -69,4 +75,6 @@ table tr #busy{
   transform: translate(-50%,-50%);
   display: block;
   text-decoration: none;
+  width: 70px;
+  border: 2px solid black;
 }
