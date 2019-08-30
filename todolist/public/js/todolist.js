@@ -50,7 +50,6 @@ $(function(){
       addEvent($(`#task-${amount-1}`).next()); // cái này là cái checkbox
       // ========================== Socket Process ============================== //
       socket.emit("send note",{
-        id: amount, // amount đã được ++ ở trên
         work: todo,
         date: time,
         checked: false
