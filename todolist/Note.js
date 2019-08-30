@@ -1,19 +1,27 @@
-const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database('./private/Note.db');
 
 module.exports = {
-  CreateTable : () => {
-    db.run(`CREATE TABLE IF NOT EXISTS note (
+  createTable : () => {
+    db.run(`CREATE TABLE IF NOT EXISTS ${TABLENAME} (
       content TEXT NOT NULL,
       date TEXT NOT NULL,
-      check INT NOT NULL
+      checked INT
     )`);
   },
-  Add : (note = {content:"",date:"",check:0}) => {
-    db.run(`INSERT INTO note VALUES(
+  add : (note = {content:"",date:"",checked:0}) => {
+    db.run(`INSERT INTO ${TABLENAME} VALUES(
       '${note.content}',
       '${note.date}',
-      ${note.check}
-    )`)
+      ${note.checked}
+    )`);
+  },
+  getAll : () => {
+    return new Promise((resolve,reject) => {
+      let list = [];
+      db.each(`SELECT rowid AS id, * FROM ${TABLENAME}`,(err,row) => {
+        if (err) reject(err);
+        list.push(row);
+      });
+      resolve(list);
+    });
   }
 };

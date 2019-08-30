@@ -4,6 +4,9 @@ const path = require("path");
 const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
+const sqlite3 = require("sqlite3").verbose();
+const db = new sqlite3.Database('./private/Note.db');
+const TABLENAME = "note";
 // const fs = require("fs");
 // dòng trên có nghĩa là đỡ mắc công tạo thêm 1 const như là const IO = io(http);
 const PORT = process.env.PORT || 8080;
@@ -16,9 +19,46 @@ app.use(express.static(path.join(__dirname,"node_modules","socket.io-client","di
 // dùng npm install --save socket.io nó tải về nguyên cái bộ socket cho mình gồm cho server và client
 // app.use này là để dùng cái bản io client
 
-app.get("/",(req,res) => {
+const createTable = (req,res,next) => {
+  db.run(`CREATE TABLE IF NOT EXISTS ${TABLENAME} (
+    content TEXT NOT NULL,
+    date TEXT NOT NULL,
+    checked INT
+  )`);
+  next();
+};
+
+const add = (note = {content:"",date:"",checked:0}) => {
+  db.run(`INSERT INTO ${TABLENAME} VALUES(
+    '${note.content}',
+    '${note.date}',
+    ${note.checked}
+  )`);
+};
+
+const getAll = () => {
+  return new Promise((resolve,reject) => {
+    let list = [];
+    db.each(`SELECT rowid AS id, * FROM ${TABLENAME}`,(err,row) => {
+      if (err) reject(err);
+      list.push(row);
+    });
+    resolve(list);
+  });
+};
+
+app.get("/",createTable,(req,res) => {
   // p.split(/[{-}]/g);
-  res.render("todolist");
+  // Note.createTable();
+  getAll()
+  .then(note => {
+    res.render("todolist");
+    console.log(note);
+  })
+  .catch(err => {
+    throw err;
+  })
+  
 });
 
 io.on("connection",socket => {
@@ -32,6 +72,7 @@ io.on("connection",socket => {
   // nếu như user disconnect thì socket sẽ làm 1 thông báo
   socket.on("send note",note => {
     console.log(note);
+    add(note);
   });
 });
 

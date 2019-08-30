@@ -9,12 +9,12 @@ db.serialize(function() {
   //     stmt.run("Ipsum " + i);
   // }
   // stmt.finalize(); // kết thúc vòng lặp nhập
-  db.run("INSERT INTO lorem VALUES ('Duc')");
+  // db.run("INSERT INTO lorem VALUES ('Duc')");
   // db.each("SELECT rowid AS id, info FROM lorem", function(err, row) {
   //   console.log(row.id + ": " + row.info);
   // });
-  db.each("SELECT * FROM lorem",(err, row) => { // .each dành cho phần lấy dữ liệu. Dùng run ko chạy dc
-    console.log(row);
+  db.each("SELECT rowid as id, * FROM lorem",(err, row) => { // .each dành cho phần lấy dữ liệu. Dùng run ko chạy dc
+    console.log(row.id);
   })
 
 });

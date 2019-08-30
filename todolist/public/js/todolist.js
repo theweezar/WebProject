@@ -50,9 +50,9 @@ $(function(){
       addEvent($(`#task-${amount-1}`).next()); // cái này là cái checkbox
       // ========================== Socket Process ============================== //
       socket.emit("send note",{
-        work: todo,
+        content: todo,
         date: time,
-        checked: false
+        checked: 0
       });
     }
   });
