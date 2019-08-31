@@ -1,4 +1,4 @@
-function addEvent(jqueryElement){
+function addEvent(jqueryElement,socket){
   jqueryElement.on("click",function(){
     if ($(this).attr("checked") === undefined){ // nếu như chưa check - sau này sẽ xử lý bằng cấu trúc dữ liệu
       $(this).children().eq(0).toggleClass("none"); // hiện ra cái dấu check
@@ -9,12 +9,30 @@ function addEvent(jqueryElement){
         color: "white"
       });
       $(this).attr("checked",""); // đánh dấu đã checked rồi
+      socket.emit("check note",{
+        checkID:$(this).prev().attr("id") // gửi cái id = task-? về cho server xử lý
+      });
     }
   });
 }
 
+function Note_li(orderNumber=0,content='',date=''){
+  return `<li>
+            <div class="input-checkbox">
+              <label for="task-${orderNumber}"> 
+                <input type="checkbox" id="task-${orderNumber}">
+                <div id="checkbox"><span class="none">&#10004;</span></div>
+              </label>
+            </div>
+            <div class="content">
+              ${content}
+              <div class="date">${date}</div>
+            </div>
+          </li>`;
+}
+
 $(function(){
-  let amount = 0;
+  let amount = 1;
   const socket = io();
   $("#add-btn").on("click",function(){
     $(".container-addtask").css("left","0%");
@@ -23,6 +41,18 @@ $(function(){
     $(".container-addtask").css("left","100%");
     $("textarea").val("");
   });
+  // addEvent($("div#checkbox")); // add event cho thằng lorem làm mẫu
+  NoteList.forEach((note,i) => {
+    if (i % 2 != 0){
+      console.log(JSON.parse(`{${note}}`));
+      const n = JSON.parse(`{${note}}`);
+      const li = Note_li(n.id,n.content,n.date);
+      $("#todo-list").append(li);
+      addEvent($(`#task-${n.id}`).next(),socket); // cái này là cái checkbox
+      amount = n.id;
+    }
+  });
+  console.log(amount);
   $("form").submit(function(e){
     e.preventDefault(); // ngăn ko cho page reload lại
     const todo = $("textarea").val();
@@ -32,22 +62,11 @@ $(function(){
     else{
       const date = new Date();
       const time = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()} ( ${date.getHours()}:${date.getMinutes()} )`;
-      const li = `<li>
-                    <div class="input-checkbox">
-                      <label for="task-${amount}"> 
-                        <input type="checkbox" name="" id="task-${amount++}">
-                        <div id="checkbox"><span class="none">&#10004;</span></div>
-                      </label>
-                    </div>
-                    <div class="content">
-                      ${todo}
-                      <div class="date">${time}</div>
-                    </div>
-                  </li>`
+      const li = Note_li(++amount,todo,time);
       $("#todo-list").append(li);
       $(".container-addtask").css("left","100%");
       $("textarea").val("");
-      addEvent($(`#task-${amount-1}`).next()); // cái này là cái checkbox
+      addEvent($(`#task-${amount}`).next(),socket); // cái này là cái checkbox
       // ========================== Socket Process ============================== //
       socket.emit("send note",{
         content: todo,
@@ -56,8 +75,6 @@ $(function(){
       });
     }
   });
-  // console.log(data_from_server);
-  addEvent($("div#checkbox"));
 });
 
 // document.getElementById("checkbox")

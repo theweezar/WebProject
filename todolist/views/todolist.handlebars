@@ -9,7 +9,7 @@
         <li>
           <div class="input-checkbox">
             <label for="prototype">
-              <input type="checkbox" name="" id="prototype">
+              <input type="checkbox" id="prototype">
               <div id="checkbox"><span class="none">&#10004;</span></div>
             </label>
           </div>
@@ -40,11 +40,6 @@
 <script>
   const NoteList = "{{this.notelist}}".replace(/&quot;/g,'"').split(/[{-}]/g);
   {{!-- Phải đổi &quot; thành dấu ' " ' bắt buộc phải là dấu ngoặc kép --}}
-  NoteList.forEach((note,i) => {
-    if (i % 2 != 0){
-      console.log(JSON.parse(`{${note}}`));
-    }
-  });
 </script>
 <script src="js/validation.js"></script>
 <script src="js/todolist.js"></script>

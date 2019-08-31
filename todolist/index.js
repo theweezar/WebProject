@@ -40,6 +40,10 @@ const add = (note = {content:"",date:"",checked:0}) => {
   });
 };
 
+const del = id => {
+  db.run(`DELETE FROM ${TABLENAME} WHERE rowid = ${id}`);
+}
+
 const getAll = () => {
   return new Promise((resolve,reject) => {
     db.all(`SELECT rowid AS id, * FROM ${TABLENAME}`,(err,row) => {
@@ -74,6 +78,10 @@ io.on("connection",socket => {
   socket.on("send note",note => {
     console.log(note);
     add(note);
+  });
+  socket.on("check note",note => {
+    console.log(`note ${note.checkID} is checked`);
+    del(note.checkID.slice(5,note.checkID.length));
   });
 });
 
