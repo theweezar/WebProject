@@ -15,8 +15,7 @@ db.serialize(function() {
   // });
   db.each("SELECT rowid as id, * FROM lorem",(err, row) => { // .each dành cho phần lấy dữ liệu. Dùng run ko chạy dc
     console.log(row.id);
-  })
-
+  });
 });
 
-// db.close();
+db.close();

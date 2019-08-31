@@ -37,8 +37,14 @@
     </form>
   </div>
 </div>
-{{!-- <script>
-  const data_from_server = "{{this.note}}".replace(/&quot;/g,"'");
-</script> --}}
+<script>
+  const NoteList = "{{this.notelist}}".replace(/&quot;/g,'"').split(/[{-}]/g);
+  {{!-- Phải đổi &quot; thành dấu ' " ' bắt buộc phải là dấu ngoặc kép --}}
+  NoteList.forEach((note,i) => {
+    if (i % 2 != 0){
+      console.log(JSON.parse(`{${note}}`));
+    }
+  });
+</script>
 <script src="js/validation.js"></script>
 <script src="js/todolist.js"></script>

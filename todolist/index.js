@@ -34,26 +34,27 @@ const add = (note = {content:"",date:"",checked:0}) => {
     '${note.date}',
     ${note.checked}
   )`);
+  db.each(`SELECT rowid AS id, * FROM ${TABLENAME}`,(err,row) => {
+    if (err) reject(err);
+    console.log(row);
+  });
 };
 
 const getAll = () => {
   return new Promise((resolve,reject) => {
-    let list = [];
-    db.each(`SELECT rowid AS id, * FROM ${TABLENAME}`,(err,row) => {
+    db.all(`SELECT rowid AS id, * FROM ${TABLENAME}`,(err,row) => {
       if (err) reject(err);
-      list.push(row);
+      resolve(row);
     });
-    resolve(list);
   });
 };
 
 app.get("/",createTable,(req,res) => {
   // p.split(/[{-}]/g);
-  // Note.createTable();
   getAll()
   .then(note => {
-    res.render("todolist");
-    console.log(note);
+    res.render("todolist",{notelist:JSON.stringify(note)});
+    console.log(JSON.stringify(note));
   })
   .catch(err => {
     throw err;
