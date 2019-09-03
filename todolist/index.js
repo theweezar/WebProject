@@ -63,7 +63,6 @@ app.get("/",createTable,(req,res) => {
   .catch(err => {
     throw err;
   })
-  
 });
 
 io.on("connection",socket => {
