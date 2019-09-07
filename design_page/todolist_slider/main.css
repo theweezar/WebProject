@@ -93,8 +93,14 @@ html,body{
 .app .content-1 .content .task-container .task-head{
   position: relative;
   width: 100%;
-  height: 10%;
+  height: 20%;
   border: 1px solid black;
+}
+.app .content-1 .content .task-container .task-head .title-2{
+  left: 20%;
+}
+.app .content-1 .content .task-container .task-head .add-btn{
+  left: 80%;
 }
 #help{
   position: fixed;
