@@ -1,0 +1,16 @@
+{{#if this.id}}
+<h1>{{this.id}}</h1>
+{{/if}}
+<form id="form" action="3" method="post">
+  <input type="text" name="val" id="">
+  <br>
+  <div id="sub">submit</div>
+</form>
+<script>
+  document.getElementById("sub").addEventListener("click",() => {
+    console.log("click");
+    const form = document.querySelector("form");
+    {{!-- form.action = `page/` --}}
+    form.submit();
+  });
+</script>
