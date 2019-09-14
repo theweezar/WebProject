@@ -65,15 +65,6 @@ app.get("/",createTable,(req,res) => {
   })
 });
 
-app.get("/test",(req,res) => {
-  res.render("test");
-});
-
-app.get("/page/:id",(req,res) => { // testing handle GET method
-  var id = req.params.id;
-  res.render("test",{id:id});
-});
-
 io.on("connection",socket => {
   // io là đường truyền input outpunt
   // socket này có thể được coi là 1 cái modem kết nối mọi cái đường truyền lại với nhau
