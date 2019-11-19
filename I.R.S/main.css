@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
+html,body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  background: #262626;
+  display: flex;
+  justify-content: center;
+}
+
+.chat-box{
+  position: relative;
+  width: 35%;
+  height: 80%;
+  border: 1px solid gray;
+  margin-top: 50px;
+  background: white;
+  border-radius: 5px;
+}
+
+.chat-box .logo{
+  position: absolute;
+  top:40%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width: 200px;
+  height: 200px;
+  opacity: 0.3;
+}
+
+.chat-box .reply-box{
+  position: relative;
+  width: 100%;
+  height: 85%;
+  /* background: yellow; */
+  overflow: scroll;
+  margin: 1% 0 2.5% 0;
+}
+
+.chat-box .reply-box ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.chat-box .reply-box ul li{
+  /* border: 1px solid black; */
+  padding: 15px;
+}
+
+.chat-box .reply-box ul li.for-bot{
+  text-align: left;
+  color: royalblue;
+}
+
+.chat-box .reply-box ul li.for-me{
+  text-align: right;
+}
+
+.chat-box .input-box{
+  position: relative;
+  width: 100%;
+  height: 10%;
+  /* background: green; */
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+.chat-box .input-box div{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.chat-box .input-box div:nth-child(1) textarea{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  resize: none;
+  width: 93%;
+  height: 75%;
+  padding: 5px;
+  outline: none;
+  font-family: 'Fira Sans', sans-serif;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.chat-box .input-box button{
+  position: absolute;
+  top:50%;
+  left:46.5%;
+  transform: translate(-50%,-50%);
+  width: 90%;
+  height: 80%;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: bold;
+  color: white;
+  background: #20a81b;
+  border: 1px solid #177914;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+}
