@@ -9,7 +9,15 @@ const data = [
 let input = 'hi';
 
 function process(){
+  let reg = [];//new RegExp('hi','g');
+  let words = [...input.split(/ /g)];
+  words.forEach(word => {
+    reg.push(new RegExp(word,'g'));
+  })
+  console.log(reg);
   data.forEach(section => {
     
   });
 }
+
+process();
