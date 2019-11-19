@@ -43,6 +43,10 @@ body{
   margin: 1% 0 2.5% 0;
 }
 
+.chat-box .reply-box::-webkit-scrollbar{
+  display: none;
+}
+
 .chat-box .reply-box ul{
   margin: 0;
   padding: 0;

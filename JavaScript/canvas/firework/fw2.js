@@ -33,7 +33,7 @@ function Spot(x,y){
     this.first_y = y;
     this.x = x;
     this.y = y;
-    this.speed = Math.floor(Math.random()*(10-3)+3);;
+    this.speed = Math.floor(Math.random()*(10-3)+3);
     this.max_reach = Math.floor(Math.random()*(30-1)+1);
     this.reached = false;
     this.omega = (Math.floor(Math.random()*(360-0)+0) * Math.PI)/180;
