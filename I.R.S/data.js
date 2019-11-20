@@ -4,21 +4,21 @@ const data = [
     "input":["hi","hello","hi there","hello there","what's up","hey"],
     "output":["hi","hello my friend","hello","hiiiiiiii","from the love of God, helly my fellow human"]
   },
-  // {
-  //   "tag":"",
-  //   "input":[],
-  //   "output":[]
-  // },
-  // {
-  //   "tag":"",
-  //   "input":[],
-  //   "output":[]
-  // },
-  // {
-  //   "tag":"",
-  //   "input":[],
-  //   "output":[]
-  // },
+  {
+    "tag":"goodbye",
+    "input":["cya", "see you later", "goodbye", "i am leaving", "have a good day","bye","i have to go"],
+    "output":["Sad to see you go :(", "Talk to you later", "Goodbye!","Go fuck your self","Fuck off!!","Good bye my friend"]
+  },
+  {
+    "tag":"name",
+    "input":["what is your name", "what should I call you", "whats your name?","your name ?","name","what are you","who are you"],
+    "output":["INTELLIGENT REPONSE SYSTEM", "I'm I.R.S", "I'm Mr.Bot"]
+  },
+  {
+    "tag":"time",
+    "input":["what time is it","the time","time","can you tell me what time is it"],
+    "output":[`${new Date().toString()}`]
+  },
   // {
   //   "tag":"",
   //   "input":[],
@@ -63,7 +63,7 @@ function process(){
         // như hi, hello, here, ....
         // nhưng nếu như input = 'hi' thì nó sẽ ko match ra dc vì sau hi trong data.input ko 
         // chữ kí tự mà chỉ có khoảng trắng, nên nó sẽ return null
-        let mList = el.match(reg);
+        let mList = el.toLowerCase().match(reg);
         console.log(mList);
         if (mList !== null){
           let canFind = true;

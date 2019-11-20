@@ -16,8 +16,13 @@ class Chatbot{
   receiveMsg(msg=''){
     this.humanMsg = msg;
     document.getElementById("msg-box").innerHTML += `<li class="for-me">${this.humanMsg}</li>`;
+    this.checkReceiveMsg();
     this.analyze();
     this.sendMsg();
+  }
+
+  checkReceiveMsg(){
+
   }
 
   analyze(){
@@ -43,7 +48,7 @@ class Chatbot{
           // như hi, hello, here, ....
           // nhưng nếu như input = 'hi' thì nó sẽ ko match ra dc vì sau hi trong data.input ko 
           // chữ kí tự mà chỉ có khoảng trắng, nên nó sẽ return null
-          let mList = el.match(reg);
+          let mList = el.toLowerCase().match(reg);
           console.log(mList);
           if (mList !== null){
             let canFind = true;
