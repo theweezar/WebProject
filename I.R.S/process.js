@@ -25,7 +25,7 @@ class Chatbot{
     let words = [...this.humanMsg.split(/ /g)];
     // tách chuỗi và đổi thành RegExp
     words.forEach(word => {
-      Reg.push(new RegExp(word.toLocaleLowerCase(),'g'));
+      Reg.push(new RegExp(`(${word.toLocaleLowerCase()})\\w+`,'g'));
     })
     console.log(Reg);
   
@@ -38,13 +38,47 @@ class Chatbot{
       Reg.forEach((reg,i) => {
         match.push([]); // cứ mỗi Regexp thì sẽ có thêm 1 mảng
         a.input.forEach(el => {
-          if (el.match(reg) !== null){
-            match[i].push(1);
+          // Đầu tiên ta sẽ dùng Regexp => /(input.split(' ' ))\w+/g
+          // nghĩa là input = 'h' thì Regexp = /(h)\w+/g và nó sẽ match ra những string 
+          // như hi, hello, here, ....
+          // nhưng nếu như input = 'hi' thì nó sẽ ko match ra dc vì sau hi trong data.input ko 
+          // chữ kí tự mà chỉ có khoảng trắng, nên nó sẽ return null
+          let mList = el.match(reg);
+          console.log(mList);
+          if (mList !== null){
+            let canFind = true;
+            for(let k = 0; k < mList.length; k++){
+              if (mList[k] === words[i]){
+                match[i].push(1);
+                canFind = false;
+                break;
+              }
+            }
+            if (canFind) match[i].push(0);
           }
-          else match[i].push(0);
+          // Nếu null thì sẽ dùng Regexp => /(input.split(' ' ))/g
+          // nghĩa là input = 'h' thì Regexp = /h/g và nó sẽ match ra những string có chữ h trong đó
+          else{
+            mList = el.match(new RegExp(words[i].toLocaleLowerCase(),'g'));
+            if (mList !== null){
+              let canFind = true;
+              for(let k = 0; k < mList.length; k++){
+                if (mList[k] === words[i]){
+                  match[i].push(1);
+                  canFind = false;
+                  break;
+                }
+              }
+              if (canFind) match[i].push(0);
+            }
+            else match[i].push(0);
+          }
+          // sau khi match Regexp xong ta bắt đầu so sánh những giá trị của những List regexp đó
+          // xem có giống như input ko
         });
       });
   
+      console.log(`Match[0-1]: ${match}`);
       // Cộng tất cả giá trị của từng cột, nếu giá trị đó !== 0 thì match_p++
       
       for(let k = 0; k < match_len; k++){
@@ -75,13 +109,20 @@ class Chatbot{
         }
       }
     }
-    console.log(max);
-    console.log(max_p);
-  
-    let rand = Math.floor(Math.random()*(data[max_p].output.length-0)+0);
-  
-    console.log(rand);
-    this.botMsg = data[max_p].output[rand];
+    console.log(`The highest percent in pList : ${max}`);
+    console.log(`The highest position in pList: ${max_p}`);
+    let rand;
+    if (max !== 0){
+      rand = Math.floor(Math.random()*(data[max_p].output.length-0)+0);
+      this.botMsg = data[max_p].output[rand];
+    }
+    else{
+      rand = Math.floor(Math.random()*(canUnderstandOutput.length-0)+0);
+      this.botMsg = canUnderstandOutput[rand];
+    }
+    
+    console.log(`Output random: ${rand}`);
+    
     console.log(this.botMsg);
     
   }

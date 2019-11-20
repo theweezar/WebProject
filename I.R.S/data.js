@@ -4,41 +4,48 @@ const data = [
     "input":["hi","hello","hi there","hello there","what's up","hey"],
     "output":["hi","hello my friend","hello","hiiiiiiii","from the love of God, helly my fellow human"]
   },
-  {
-    "tag":"",
-    "input":[],
-    "output":[]
-  },
-  {
-    "tag":"",
-    "input":[],
-    "output":[]
-  },
-  {
-    "tag":"",
-    "input":[],
-    "output":[]
-  },
-  {
-    "tag":"",
-    "input":[],
-    "output":[]
-  },
-  {
-    "tag":"",
-    "input":[],
-    "output":[]
-  }
+  // {
+  //   "tag":"",
+  //   "input":[],
+  //   "output":[]
+  // },
+  // {
+  //   "tag":"",
+  //   "input":[],
+  //   "output":[]
+  // },
+  // {
+  //   "tag":"",
+  //   "input":[],
+  //   "output":[]
+  // },
+  // {
+  //   "tag":"",
+  //   "input":[],
+  //   "output":[]
+  // },
+  // {
+  //   "tag":"",
+  //   "input":[],
+  //   "output":[]
+  // }
 ];
 
-let input = 'hi there';
+const canUnderstandOutput = [
+  "Sorry, I don't understand what you are trying to say",
+  "WTF dude ??",
+  "...",
+  "Can't understand"
+];
+
+let input = 'h';
 
 function process(){
   let Reg = [];//new RegExp('hi','g');
   let words = [...input.split(/ /g)];
   // tách chuỗi và đổi thành RegExp
   words.forEach(word => {
-    Reg.push(new RegExp(word.toLocaleLowerCase(),'g'));
+    Reg.push(new RegExp(`(${word.toLocaleLowerCase()})\\w+`,'g'));
   })
   console.log(Reg);
 
@@ -51,13 +58,47 @@ function process(){
     Reg.forEach((reg,i) => {
       match.push([]); // cứ mỗi Regexp thì sẽ có thêm 1 mảng
       a.input.forEach(el => {
-        if (el.match(reg) !== null){
-          match[i].push(1);
+        // Đầu tiên ta sẽ dùng Regexp => /(input.split(' ' ))\w+/g
+        // nghĩa là input = 'h' thì Regexp = /(h)\w+/g và nó sẽ match ra những string 
+        // như hi, hello, here, ....
+        // nhưng nếu như input = 'hi' thì nó sẽ ko match ra dc vì sau hi trong data.input ko 
+        // chữ kí tự mà chỉ có khoảng trắng, nên nó sẽ return null
+        let mList = el.match(reg);
+        console.log(mList);
+        if (mList !== null){
+          let canFind = true;
+          for(let k = 0; k < mList.length; k++){
+            if (mList[k] === words[i]){
+              match[i].push(1);
+              canFind = false;
+              break;
+            }
+          }
+          if (canFind) match[i].push(0);
         }
-        else match[i].push(0);
+        // Nếu null thì sẽ dùng Regexp => /(input.split(' ' ))/g
+        // nghĩa là input = 'h' thì Regexp = /h/g và nó sẽ match ra những string có chữ h trong đó
+        else{
+          mList = el.match(new RegExp(words[i].toLocaleLowerCase(),'g'));
+          if (mList !== null){
+            let canFind = true;
+            for(let k = 0; k < mList.length; k++){
+              if (mList[k] === words[i]){
+                match[i].push(1);
+                canFind = false;
+                break;
+              }
+            }
+            if (canFind) match[i].push(0);
+          }
+          else match[i].push(0);
+        }
+        // sau khi match Regexp xong ta bắt đầu so sánh những giá trị của những List regexp đó
+        // xem có giống như input ko
       });
     });
 
+    console.log(`Match[0-1]: ${match}`);
     // Cộng tất cả giá trị của từng cột, nếu giá trị đó !== 0 thì match_p++
     
     for(let k = 0; k < match_len; k++){
@@ -88,12 +129,16 @@ function process(){
       }
     }
   }
-  console.log(max);
-  console.log(max_p);
+  console.log(`The highest percent in pList : ${max}`);
+  console.log(`The highest position in pList: ${max_p}`);
+  let rand;
+  if (max !== 0){
+    rand = Math.floor(Math.random()*(data[max_p].output.length-0)+0);
+  }
+  else rand = Math.floor(Math.random()*(canUnderstandOutput.length-0)+0);
+  
 
-  let rand = Math.floor(Math.random()*(data[max_p].output.length-0)+0);
-
-  console.log(rand);
+  console.log(`Output random: ${rand}`);
 }
 
 // process();
