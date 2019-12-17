@@ -5,7 +5,7 @@ cv.width = 300;
 cv.height = 400;
 
 // let board = []; 
-const box = 20;
+const box = 50;
 const colors = ['orange','blue','lightblue','cornflowerblue','red','green','purple','black','darkcyan','pink'];
 const width = cv.width / box;
 const height = cv.height / box;
@@ -21,7 +21,8 @@ class Block {
     ];
     this.lenX = this.matrix[0].length;
     this.lenY = this.matrix.length;
-    this.color = colors[Math.floor(Math.random()*(colors.length-0)+0)];
+    // this.color = colors[Math.floor(Math.random()*(colors.length-0)+0)];
+    this.color = 'black';
     console.log(`Real y length = ${this.lenY}\nReal x length = ${this.lenX}`);
   }
   moveLeft(){
@@ -65,6 +66,7 @@ class Block {
         }
       }
     }
+    this.fullRow();
     this.resetBlock();
     console.log(board);
   }
@@ -100,12 +102,36 @@ class Block {
     return false;
   }
   resetBlock(){
-    this.x = this.ox = 0;
+    this.x = this.ox = 3;
     this.y = this.oy = 0;
-    this.color = colors[Math.floor(Math.random()*(colors.length-0)+0)];
+    // this.color = colors[Math.floor(Math.random()*(colors.length-0)+0)];
+    this.color = 'black';
   }
   fullRow(){
-    
+    let full = false;
+    for(let i = height - 1; i >= 0; i--){
+      if (board[i].every(e => {return e === 1;})){
+        for(let j = i - 1; j >= 0; j--){
+          board[j + 1] = board[j];
+        }
+        i++;
+        full = true;
+      }
+    }
+    if (full) this.reDrawBoard();
+  }
+  reDrawBoard(){
+    c.clearRect(0,0,width*box,height*box);
+    c.beginPath();
+    c.fillStyle = this.color;
+    for(let i = height - 1; i >= 0; i--){
+      for(let j = 0; j < width; j++){
+        if (board[i][j] === 1){
+          c.fillRect(j * box, i * box,box,box);
+        }
+      }
+    }
+    c.closePath();
   }
   clear(){
     for(let i = 0; i < this.lenY; i++){
