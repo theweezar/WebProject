@@ -4,8 +4,9 @@ let c  = cv.getContext("2d");
 cv.width = 300;
 cv.height = 400;
 
-let board = []; 
-const box = 50;
+// let board = []; 
+const box = 20;
+const colors = ['orange','blue','lightblue','cornflowerblue','red','green','purple','black','darkcyan','pink'];
 const width = cv.width / box;
 const height = cv.height / box;
 let start ; // interval
@@ -15,62 +16,111 @@ class Block {
     this.x = this.ox = x;
     this.y = this.oy = y;
     this.matrix = [
-      [0, 0, 0],
       [0, 1, 0],
-      [0, 1, 0]
+      [1, 1, 1],
     ];
-    this.sX = this.calcX();
-    this.sY = this.calcY();
-    this.lenX = this.calcLengthX();
-    this.lenY = this.calcLengthY();
+    this.lenX = this.matrix[0].length;
+    this.lenY = this.matrix.length;
+    this.color = colors[Math.floor(Math.random()*(colors.length-0)+0)];
+    console.log(`Real y length = ${this.lenY}\nReal x length = ${this.lenX}`);
   }
-  calcLengthY(){ // tìm độ dài y thực của block
-    for (let i = this.matrix.length - 1; i >= 0; i--) {
-      if (this.matrix[i].some(b => { return b === 1; })) {
-        console.log(`Real y length = ${i + 1 - (this.sY - this.y)}`);
-        return i + 1 - (this.sY - this.y);
-      }
+  moveLeft(){
+    if (!this.collisionLeft()){
+      if (this.x !== 0) this.x -= 1;
     }
   }
-  calcY(){ // tìm vị trí y đầu tiên thực của block
-    for (let i = 0; i < this.matrix.length; i++) {
-      if (this.matrix[i].some(e => { return e === 1; })) {
-        return this.y + i;
-      }
+  moveRight(){
+    if (!this.collisionRight()){
+      if (this.x + this.lenX < width) this.x += 1;
     }
   }
-  calcLengthX(){ // tìm độ dài x thực của block
-    for (let i = this.matrix.length - 1; i >= 0; i--) {
-      let colX = this.matrix.map(row => {
-        return row[i];
-      });
-      if (colX.some(e => { return e === 1; })) {
-        console.log(`Real x length = ${i + 1 - (this.sX - this.x)}`);
-        return i + 1 - (this.sX - this.x);
-      }
+  fallDown(){
+    if (this.y + this.lenY === height || this.collision()){
+      console.log(`x: ${this.x} ; y: ${this.y}`);
+      this.merge();
     }
-  }
-  calcX(){ // tìm vị trí x đầu tiên thực của block
-    for (let i = 0; i < this.matrix.length; i++) {
-      let colX = this.matrix.map(row => {
-        return row[i];
-      });
-      if (colX.some(e => { return e === 1; })) {
-        return this.x + i;
-      }
-    }
+    else this.y += 1;
   }
   rotate(){
-    // for()
     // cột = hàng
-    // hoặc là hàng = cột
+    this.clear();
+    let newMatrix = [];
+    for(let i = 0; i < this.matrix[0].length; i++){
+      let colX = this.matrix.map(row => {
+        return row[i];
+      });
+      newMatrix.push(colX.reverse());
+    }
+    this.matrix = newMatrix;
+    console.log(newMatrix);
+    this.lenX = this.matrix[0].length;
+    this.lenY = this.matrix.length;
+    console.log(`Real y length = ${this.lenY}\nReal x length = ${this.lenX}`);
+  }
+  merge(){
+    for(let i = 0; i < this.lenY; i++){
+      for(let j = 0; j < this.lenX; j++){
+        if (this.matrix[i][j] === 1){
+          board[this.y + i][this.x + j] = 1;
+        }
+      }
+    }
+    this.resetBlock();
+    console.log(board);
+  }
+  collisionLeft(){
+    for(let i = this.lenY - 1; i >= 0; i--){
+      for(let j = this.lenX - 1; j >= 0; j--){
+        if (this.matrix[i][j] === 1){
+          if (board[this.y + i][this.x + j - 1] === 1) return true;
+        }
+      }
+    }
+  }
+  collisionRight(){
+    for(let i = this.lenY - 1; i >= 0; i--){
+      for(let j = this.lenX - 1; j >= 0; j--){
+        if (this.matrix[i][j] === 1){
+          if (board[this.y + i][this.x + j + 1] === 1) return true;
+        }
+      }
+    }
+  }
+  collision(){
+    for(let i = this.lenY - 1; i >= 0; i--){
+      for(let j = this.lenX - 1; j >= 0; j--){
+        if (this.matrix[i][j] === 1){
+          if (board[this.y + i + 1][this.x + j] === 1 // bottom + left + right
+            || board[this.y + i + 1][this.x + j] === 1 && board[this.y + i][this.x + j - 1] === 1
+            || board[this.y + i + 1][this.x + j] === 1 && board[this.y + i][this.x + j + 1] === 1
+          ) return true;
+        }
+      }
+    }
+    return false;
+  }
+  resetBlock(){
+    this.x = this.ox = 0;
+    this.y = this.oy = 0;
+    this.color = colors[Math.floor(Math.random()*(colors.length-0)+0)];
+  }
+  fullRow(){
+    
   }
   clear(){
-
+    for(let i = 0; i < this.lenY; i++){
+      for(let j = 0; j < this.lenX; j++){
+        if (this.matrix[i][j] === 1){
+          c.clearRect((this.ox + j) * box, (this.oy + i) * box, box, box);
+        }
+      }
+    }
+    this.ox = this.x;
+    this.oy = this.y;
   }
   draw(){
     c.beginPath();
-    c.fillStyle = "cornflowerblue";
+    c.fillStyle = this.color;
     for (let y = 0; y < this.matrix.length; y++) {
       for (let x = 0; x < this.matrix[y].length; x++) {
         if (this.matrix[y][x] === 1) {
@@ -86,25 +136,46 @@ class Block {
     c.fillRect(this.x * box, this.y * box, 5, 5);
     c.closePath();
   }
-  drawsXY(){
-    c.beginPath();
-    c.fillStyle = "purple";
-    c.fillRect(this.sX * box, this.sY * box, 5, 5);
-    c.closePath();
-  }
+
 }
 
-class Game{
-  constructor() {
-    this.b = new Block();
+function initBoard(){
+  let board = [];
+  for(let i = 0; i < height; i++){
+    board.push([]);
+    board[i].length = width;
+    board[i].fill(0);
   }
-  run(){
+  return board;
+}
 
-  }
+const board = initBoard();
+const b = new Block();
+
+function run(){
+  b.clear();
+  b.draw();
+  b.drawXY();
 }
 
 
-let b = new Block();
-b.draw();
-b.drawXY();
-b.drawsXY();
+window.addEventListener("keydown",(e)=>{
+  switch (e.keyCode) {
+    case 37: // left
+      b.moveLeft();
+      break;
+    case 32: // Space - rotate
+      b.rotate();
+      break;
+    case 39: // Right
+      b.moveRight();
+      break;
+    case 40: // Down
+      b.fallDown();
+      break;
+    default:
+      break;
+  }
+})
+
+start = setInterval(run,1000/60);
