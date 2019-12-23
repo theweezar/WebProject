@@ -56,7 +56,7 @@ class Block {
     console.log(newMatrix);
     this.lenX = this.matrix[0].length;
     this.lenY = this.matrix.length;
-    console.log(`Real y length = ${this.lenY}\nReal x length = ${this.lenX}`);
+    // console.log(`Real y length = ${this.lenY}\nReal x length = ${this.lenX}`);
   }
   merge(){
     for(let i = 0; i < this.lenY; i++){
@@ -109,7 +109,7 @@ class Block {
   }
   fullRow(){
     let full = false;
-    for(let i = height - 1; i >= 0; i--){
+    for(let i = height - 1; i > 0; i--){
       if (board[i].every(e => {return e === 1;})){
         for(let j = i - 1; j >= 0; j--){
           board[j + 1] = board[j];
@@ -202,6 +202,7 @@ window.addEventListener("keydown",(e)=>{
     default:
       break;
   }
+  console.log(`x:${b.x}, y:${b.y}`);
 })
 
 start = setInterval(run,1000/60);
