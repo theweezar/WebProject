@@ -42,21 +42,21 @@ app.use(express.urlencoded({extended:false}));// middleware này sẽ tạo nên
 // load ra và định nghĩa cho đúng cái loại file đó luôn, nhưng phải gọi đúng địa chỉ
 
 app.get('/',(req,res) => {
-  let p = new Promise((rs,rj) =>{
-    fs.readdir(path.join('img'),(err,data) => {
-      if (err) rj(err);
-      else rs(data);
-    });
-  });
-  p.then(files => {
-    console.log(files);
-    res.end();
-  }).catch(err => {throw err;}); // dùng cách dưới cũng dc, mà ghi ra đây để đọc luôn :)
+  // let p = new Promise((rs,rj) =>{
+  //   fs.readdir(path.join('img'),(err,data) => {
+  //     if (err) rj(err);
+  //     else rs(data);
+  //   });
+  // });
+  // p.then(files => {
+  //   console.log(files);
+  //   res.end();
+  // }).catch(err => {throw err;}); // dùng cách dưới cũng dc, mà ghi ra đây để đọc luôn :)
   
-  // api.getFiles('img').then(rs => { // rs: results : kết quả dc trả về từ hàm api.getFiles
-  //   if (!req.session.logged) res.render('albums',{pics:rs, logged:false});
-  //   else res.render('albums',{pics:rs, logged:true});
-  // }).catch(err => {throw err;});
+  api.getFiles('img').then(rs => { // rs: results : kết quả dc trả về từ hàm api.getFiles
+    if (!req.session.logged) res.render('albums',{pics:rs, logged:false});
+    else res.render('albums',{pics:rs, logged:true});
+  }).catch(err => {throw err;});
 });
 
 const RedirectHome = (req,res,next) => { // nếu đã đăng nhập rồi thì ko được truy cập /login, /register
