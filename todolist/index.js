@@ -17,7 +17,7 @@ app.set("view engine","handlebars");
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.static(path.join(__dirname,"node_modules","socket.io-client","dist")));
 // dùng npm install --save socket.io nó tải về nguyên cái bộ socket cho mình gồm cho server và client
-// app.use này là để dùng cái bản io client
+// app.use này là để dùng cái bản socket.io.js client
 
 const createTable = (req,res,next) => {
   db.run(`CREATE TABLE IF NOT EXISTS ${TABLENAME} (
