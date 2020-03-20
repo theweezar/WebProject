@@ -75,13 +75,16 @@ io.on("connection",socket => {
   });
   // nếu như user disconnect thì socket sẽ làm 1 thông báo
   socket.on("send note",note => {
+    // ở đây biến note là dữ liệu được gửi từ client về server
     console.log(note);
     add(note);
   });
+  // nếu như user tạo 1 note thì sẽ được lưu vào database
   socket.on("check note",note => {
     console.log(`note ${note.checkID} is checked`);
     del(note.checkID.slice(5,note.checkID.length));
   });
+  // nếu như user đã làm xong việc được note và user check vào ô vuông thì note sẽ được xóa khỏi db
 });
 
 http.listen(PORT,() => {
