@@ -29,6 +29,7 @@ app.get("/",(req,res) => {
     res.render("list",{f:rs,album:true});
   })
   .catch(err => {throw err;})
+  // res.end("shit");
 })
 
 app.get("/:folder",(req,res) => {
