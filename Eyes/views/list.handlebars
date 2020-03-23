@@ -1,0 +1,11 @@
+
+{{#if album}}
+<div>
+  <ul class="album">
+    {{#each f}}
+      <a href="/{{this}}"><li>{{this}}</li></a>
+    {{/each}}
+  </ul>
+</div>
+{{#else}}
+{{/if}}
