@@ -4,7 +4,8 @@ const path = require("path");
 const fs = require("fs");
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
-const exphbs  = require('express-handlebars');
+const exphbs = require('express-handlebars');
+const {exec} = require('child_process');
 const PORT = process.env.PORT | 8080;
 const DirPath = "C:\\Users\\hpmdu\\Music";
 
@@ -12,6 +13,7 @@ app.engine('handlebars', exphbs({defaultLayout:'main'})); // set defaultlayout i
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname,"node_modules","socket.io-client","dist")));
 
 app.get("/",(req,res) => {
   var p = new Promise((rs,rj) => {
@@ -34,12 +36,12 @@ app.get("/:folder",(req,res) => {
     fs.readdir(path.join(DirPath,req.params.folder),(err,d) => {
       if (err) rj(err);
       else rs(d.filter(f => {
-        return /.mp3/.test(f);
+        return /.mp3/.test(f) || /.MP3/.test(f);
       }));
     })
   })
   .then(rs => {
-    res.end(`${rs}`);
+    res.render("list",{parent:req.params.folder,songs:rs});
   })
   .catch(err => {throw err;});
 })
@@ -52,9 +54,12 @@ io.on("connection",socket => {
   socket.on("disconnect",() => {
     console.log("Disconnected");
   });
-  // ================================================= //
-
-})
+  // ============================================================== //
+  socket.on("REQUEST_PLAY_A_SONG",song => {
+    console.log(`${DirPath}${song.link}`);
+    exec(`C: start`);
+  });
+});
 
 http.listen(PORT,() => {
   console.log(`Server is running on PORT : ${PORT}`);

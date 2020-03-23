@@ -7,5 +7,14 @@
     {{/each}}
   </ul>
 </div>
-{{#else}}
+{{else}}
+<div>
+  <ul class="album">
+    {{#each songs}}
+      {{!-- <a href="{{parent}}/{{this}}"></a> --}}
+      <li link="{{parent}}\\{{this}}">{{this}}</li>
+    {{/each}}
+  </ul>
+</div>
+<script src="js/play.js"></script>
 {{/if}}
