@@ -5,6 +5,10 @@ html,body{
   padding: 0;
 }
 
+body{
+  background: #f6f6f6;
+}
+
 .intro{
   position: absolute;
   top:50%;
@@ -12,13 +16,15 @@ html,body{
   transform: translate(-50%,-50%);
   width: 80%;
   height: 60%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: grid;
   grid-template-columns: 50% 50%;
 }
 
 .intro .word{
   padding: 10px;
+  position: relative;
+  transform: translateY(-10%);
 }
 
 .intro .word .name{
@@ -34,14 +40,72 @@ html,body{
   font-family: 'Gochi Hand', cursive;
   font-size: 30px;
   color: rgb(117, 117, 117);
-  padding: 5px 0 15px 0;
+  padding: 5px 20px 15px 55px;
 }
 
 .intro .word .sth{
   font-family: 'Gochi Hand', cursive;
   color: rgb(168, 160, 160);
+  padding: 0 20px 0 55px;
+}
+
+.intro .word .more-btn{
+  position: absolute;
+  right: 0;
+  bottom: 70px;
+  right: 30px;
+  background: white;
+  border: 2px solid black;
+  padding: 10px 15px;
+  font-weight: bold;
+  font-family: 'Gochi Hand', cursive;
+  text-transform: uppercase;
+  font-size: 110%;
+  cursor: pointer;
+}
+
+.intro .word .more-btn:active{
+  background: black;
+  color: white;
+}
+
+.intro .word .icon-box{
+  margin: 25px 0 0 35px;
+  /* border: 1px solid black; */
+  width: 200px;
+  height: 50px;
+  display: flex;
+}
+
+.intro .word .icon-box a{
+  display: block;
+  width: 50px;
+  height: 50px;
+  /* background:yellow; */
+  margin-left: 35px;
+  cursor: pointer;
+}
+
+.intro .word .icon-box .insta-i{
+  background: url("./insta.png") no-repeat center;
+  background-size: cover;
+}
+
+.intro .word .icon-box .fb-i{
+  background: url("./fb.png") no-repeat center;
+  background-size: cover;
 }
 
 .intro .ava{
-  border: 1px solid black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+.intro .ava img{
+  width: 350px;
+  height: auto;
+  transform: translateY(-10%);
 }
