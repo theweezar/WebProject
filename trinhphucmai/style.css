@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+html,body{
+  margin: 0;
+  padding: 0;
+}
+
+.intro{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  height: 60%;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.intro .word{
+  padding: 10px;
+}
+
+.intro .word .name{
+  font-size: 80px;
+  /* width: 350px; */
+  height: auto;
+  font-family: 'Indie Flower', cursive;
+  color: rgb(41, 39, 39);
+}
+
+.intro .word .quote{
+  letter-spacing: 0.5px;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 30px;
+  color: rgb(117, 117, 117);
+  padding: 5px 0 15px 0;
+}
+
+.intro .word .sth{
+  font-family: 'Gochi Hand', cursive;
+  color: rgb(168, 160, 160);
+}
+
+.intro .ava{
+  border: 1px solid black;
+}
