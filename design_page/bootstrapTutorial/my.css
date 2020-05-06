@@ -1,0 +1,10 @@
+body{
+  background: whitesmoke;
+}
+.jumbotron{
+  background-color: #4B0082;
+  color: white
+}
+.btn-default{
+  background: white;
+}
