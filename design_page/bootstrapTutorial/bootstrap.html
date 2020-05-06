@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bootstrap</title>
-  <link rel="stylesheet" href="../bootstrap-4.4.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bootstrap-4.4.1-dist/css/bootstrap.css">
   <link rel="stylesheet" href="my.css">
 </head>
 <body>
@@ -58,6 +58,89 @@
         Autem error sit delectus non nemo pariatur voluptatum quisquam ea vero ipsam totam, facere dignissimos rem aliquam quas placeat exercitationem beatae saepe alias tempora laudantium at, quae magni. Illo, modi!
       </div>
     </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <h4>Column 5</h4>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga doloribus dolor accusamus fugiat incidunt tempora maiores soluta repellat dolore eveniet, laboriosam quae voluptas iusto, perferendis debitis. Tempore nulla ullam possimus?Rem, labore! Nobis impedit quidem consequatur doloremque atque earum aspernatur. Atque, dolores minus provident unde aliquam laborum id, voluptate ipsam tempora ad, similique velit tenetur modi possimus odit alias explicabo!</p>
+      </div>
+      <div class="col-lg-3">
+        <h4>Column 6</h4>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga doloribus dolor accusamus fugiat incidunt tempora maiores soluta repellat dolore eveniet, laboriosam quae voluptas iusto, perferendis debitis. Tempore nulla ullam possimus?Rem, labore! Nobis impedit quidem consequatur doloremque atque earum aspernatur. Atque, dolores minus provident unde aliquam laborum id, voluptate ipsam tempora ad, similique velit tenetur modi possimus odit alias explicabo!</p>
+      </div>
+      <div class="col-lg-3">
+        <h4>Column 7</h4>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga doloribus dolor accusamus fugiat incidunt tempora maiores soluta repellat dolore eveniet, laboriosam quae voluptas iusto, perferendis debitis. Tempore nulla ullam possimus?Rem, labore! Nobis impedit quidem consequatur doloremque atque earum aspernatur. Atque, dolores minus provident unde aliquam laborum id, voluptate ipsam tempora ad, similique velit tenetur modi possimus odit alias explicabo!</p>
+      </div>
+    </div>
+
+    <ul class="list-group w-50">
+      <li class="list-group-item">w-50 => width: 50%</li>
+      <li class="list-group-item active">Item 2</li>
+      <li class="list-group-item">Item 3</li>
+      <li class="list-group-item">Item 4</li>
+      <li class="list-group-item">Item 5</li>
+    </ul>
+
+    <div class="list-group">
+      <a href="#" class="list-group-item list-group-item-action active">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">mb-1: margin box 1</h5>
+          <small>3 days ago</small>
+        </div>
+        <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam quas odit et nemo, quasi eius a repudiandae debitis, nesciunt ipsum ad? Pariatur animi totam cumque temporibus. Fugiat, laudantium? Unde, similique!</p>
+        <small>Something in here</small>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="m-3">m-3: margin 3</h5>
+          <small>3 days ago</small>
+        </div>
+        <p class="mb-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae ut nulla inventore dolorum, autem enim officia? Ut est voluptatem exercitationem earum hic nulla nemo. Ratione quam perferendis ea! Autem, officiis!
+        Perspiciatis accusamus velit placeat consequuntur, praesentium quasi quam dolore mollitia nesciunt, asperiores excepturi labore distinctio recusandae assumenda consectetur iste aliquid voluptates? Rem tenetur amet excepturi ipsa nobis explicabo similique placeat!
+        Minima saepe, accusantium quos perferendis esse nostrum! Libero repellendus, dolorum dolorem soluta possimus nam quas magnam ducimus delectus minus doloremque. Blanditiis libero deleniti quibusdam eos aspernatur sed autem culpa! Ipsa?</p>
+        <small>Something in here</small>
+      </a>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-home">Home</a>
+          <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-profile">Profile</a>
+          <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-messages">Messages</a>
+          <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-settings">Settings</a>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="list-home">Home</div>
+          <div class="tab-pane fade" id="list-profile">Profile</div>
+          <div class="tab-pane fade" id="list-messages">Message</div>
+          <div class="tab-pane fade" id="list-settings">Settings</div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <form action="">
+    <div class="form-group">
+      <label for="usernameInput">Username</label>
+      <input type="text" class="form-control w-50 mx-1 shadow-none" id="usernameInput">
+      <small>This is error message</small>
+    </div>
+    <div class="form-group">
+      <label for="passwordInput">Password</label>
+      <input type="password" class="form-control w-50 mx-1" id="passwordInput">
+      <small>This is error message</small>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="../bootstrap-4.4.1-dist/js/bootstrap.bundle.js"></script>
+  <script src="../bootstrap-4.4.1-dist/js/bootstrap.js"></script>
 </body>
 </html>

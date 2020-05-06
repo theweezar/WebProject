@@ -1,0 +1,17 @@
+html,body{
+  height: 100%;
+}
+
+.container{
+  background: lightgray;
+}
+
+.container-fluid{
+  background: lightgray;
+}
+
+.fill{
+  min-height: 100%;
+  height: 100%;
+}
+
