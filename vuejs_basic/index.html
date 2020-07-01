@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js</title>
+  <link rel="stylesheet" href="../css_js_lib/css/bootstrap.css">
+  <style>
+    .btn:focus, .btn:active, input:focus, input:active{
+      box-shadow: none! important;
+      outline: none! important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 id="start">
+      {{msg}}
+    </h1>
+
+    <div id="hoverbtn">
+      <button v-bind:title="save" class="btn btn-success" role="button">Hover me</button>
+      <button v-bind:title="del" class="btn btn-danger" role="button">Hover me</button>
+    </div>
+
+    <div id="boolean">
+      <p v-if="seen">You can see me when the statement is true</p>
+    </div>
+
+    <div id="list">
+      <ul>
+        <li v-for="e in todos">
+          {{e}}
+        </li>
+      </ul>
+    </div>
+
+    <div id="clickme">
+      <button v-on:click="plusOne" class="btn btn-default border border-secondary" role="button">Click me</button>
+      <span>Time: {{timeClicked}}</span>
+    </div>
+    <hr>
+    <div id="addlist" class="my-3">
+      <div class="input-group mb-3">
+        <input v-model="todo" type="text" class="form-control" placeholder="Write something" >
+        <div class="input-group-append">
+          <button v-on:click="push" class="btn btn-outline-secondary" type="button">Add</button>
+        </div>
+      </div>
+      <p>List</p>
+      <ul>
+        <li v-for="e in list">
+          {{e.text}}
+        </li>
+      </ul>
+    </div>
+    <hr>
+    <div id="app" class="my-3">
+      <ol>
+        <!-- Ở đây todo và key là từ khóa đã được thư viện quy định -->
+        <todo-item
+          v-for="item in groceryList"
+          v-bind:todo="item"
+          v-bind:key="item.id"
+        ></todo-item>
+      </ol>
+    </div>
+  </div>
+
+
+
+
+  <script src="../css_js_lib/js/jquery.min.js"></script>
+  <script src="../css_js_lib/js/bootstrap.bundle.js"></script>
+  <script src="../css_js_lib/js/bootstrap.js"></script>
+  <script src="../css_js_lib/js/vue.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
