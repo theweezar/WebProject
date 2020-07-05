@@ -18,16 +18,16 @@
     <h1 id="start">
       {{msg}}
     </h1>
-
+    <hr>
     <div id="hoverbtn">
       <button v-bind:title="save" class="btn btn-success" role="button">Hover me</button>
       <button v-bind:title="del" class="btn btn-danger" role="button">Hover me</button>
     </div>
-
+    <hr>
     <div id="boolean">
       <p v-if="seen">You can see me when the statement is true</p>
     </div>
-
+    <hr>
     <div id="list">
       <ul>
         <li v-for="e in todos">
@@ -35,9 +35,11 @@
         </li>
       </ul>
     </div>
-
+    <hr>
     <div id="clickme">
       <button v-on:click="plusOne" class="btn btn-default border border-secondary" role="button">Click me</button>
+      <button @mouseover="plusOne" class="btn btn-default border border-secondary" role="button">Hover me</button>
+      <!-- @mouseover là short hand của v-on:mouseover -->
       <span>Time: {{timeClicked}}</span>
     </div>
     <hr>
@@ -57,17 +59,22 @@
     </div>
     <hr>
     <div id="app" class="my-3">
+      <h3>Create a component</h3>
       <ol>
         <!-- Ở đây todo và key là từ khóa đã được thư viện quy định -->
         <todo-item
           v-for="item in groceryList"
-          v-bind:todo="item"
+          v-bind:tod="item"
           v-bind:key="item.id"
         ></todo-item>
       </ol>
     </div>
   </div>
-
+  <hr>
+  <div id="rawhtml">
+    <p>Using : {{rawHTML}}</p>
+    <p>Using v-html: <span v-html="rawHTML"></span></p>
+  </div>
 
 
 
