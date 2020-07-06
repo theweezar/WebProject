@@ -1,31 +1,27 @@
 <template>
-  <div class="aligncenter">
-    <div class="container-fluid row h-100 no-padding">
-      <Navigation v-on:change="changeType" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding" v-bind:func='func'/>
-      <TodoList class="col-lg-9 col-md-9 col-sm-9 col-xs-9 no-padding" v-bind:msg='message'/>
+  <div class="aligncenter bg-dark">
+    <div class="container-fluid row h-100 p-2">
+      <Notebook class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding" v-bind:classify='classify'/>
+      <TodoList class="col-lg-9 col-md-9 col-sm-9 col-xs-9 no-padding" v-bind:msg='message'
+      v-bind:kClass="classify.k"/>
     </div>
   </div>
 </template>
 
 <script>
-import Navigation from './components/Navigation.vue'
+import Notebook from './components/Notebook.vue'
 import TodoList from './components/TodoList.vue'
 
 export default {
   name: 'App',
   components: {
     TodoList,
-    Navigation
+    Notebook
   },
   data(){
     return {
       message: 'Hello World',
-      func: {k: 1}
-    }
-  },
-  methods:{
-    changeType: function(){
-      console.log("change");
+      classify: {k: 1},
     }
   }
 }
@@ -41,5 +37,9 @@ export default {
 }
 .no-padding{
   padding: 0! important;
+}
+.btn:focus, .btn:active, input:focus{
+  outline: none! important;
+  box-shadow: none! important;
 }
 </style>

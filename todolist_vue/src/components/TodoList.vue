@@ -1,7 +1,7 @@
 <template>
-  <div class="hello">
+  <div class="bg-white">
     <h1>{{msg}}</h1>
-    
+    <p>{{kClass}}</p>
   </div>
 </template>
 
@@ -9,8 +9,11 @@
 export default {
   name: 'TodoList',
   // props là biến được truyền từ component cha và component con bằng v-bind:msg
-  props: {
-    msg: String
+  props: ['msg','kClass'],
+  watch:{
+    kClass: function(){
+      console.log("change");
+    }
   }
 }
 </script>
