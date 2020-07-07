@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-primary">
     <h1>{{msg}}</h1>
-    <p>{{kClass}}</p>
+      <p>{{kClass}}</p>
   </div>
 </template>
 
