@@ -3,12 +3,10 @@ const app = express();
 const path = require("path");
 const socketIO = require("socket.io");
 const exphbs = require("express-handlebars");
-const fs = require("fs");
-const PORT = process.env.PORT | 5000;
-const session = require("express-session");
+const PORT = process.env.PORT | 5001;
 const async = require("asyncawait/async");
 const await = require("asyncawait/await");
-const mysql = require("mysql");
+const axios = require('axios');
 
 app.engine('handlebars', exphbs({defaultLayout:'main'})); 
 app.set('view engine', 'handlebars');
@@ -25,6 +23,7 @@ app.get("/",(req,res) => {
   res.render("room");
 });
 
+// server này là để load front end
 const server = app.listen(PORT,() => {
   console.log(`Server is running on PORT: ${PORT} !!!!`);
 })
@@ -32,5 +31,14 @@ const server = app.listen(PORT,() => {
 const io = socketIO(server);
 
 io.on("connection", socket => {
-  
+  socket.on("POST_MSG", packet => {    
+    axios.default.post('http://localhost:5000/addblockmsg', packet)
+    .then((res) => {
+      console.log(res.data);
+      // io.emit("SEND_MSG_TO_ALL");
+    })
+    .catch((error) => {
+      throw error;
+    })
+  });
 });

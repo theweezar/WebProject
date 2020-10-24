@@ -1,29 +1,59 @@
-const SHA256 = require("crypto-js/sha256");
+const Block = require("./block");
 
-class Block{
+class BlockChain{
 
-  constructor(packet = {
-    userName:"",
-    msg:""
-  },preHash){
-    this.packet = packet;
-    this.preHash = preHash;
-    this.timeStamp = new Date().getTime();
-    this.nonce = 0;
-    this.hash = calculateHash();
+  constructor(){
+    this.chain = [];
+    this.unvb = [];
   }
 
-  calculateHash(){
-    return SHA256(this.preHash + this.timeStamp + this.nonce + JSON.stringify(this.packet));
+  lastBlock(){
+    return this.chain[this.chain.length - 1];
   }
 
-  difficulty(d = 0){
-    return new String(new Array(length = d + 1)).replace(/,/g,"0")
+  addBlock(userName = "", msg = ""){
+    let hash = this.chain.length == 0 ? "0" : this.lastBlock().hash;
+    let block = new Block({
+      userName: userName,
+      msg:msg
+    }, hash);
+    block.makeProof(3);
+    this.chain.push(block);
   }
 
-  proof(){
-     
+  processQueue(){
+    
   }
+
+  isChainValid(){
+    for(let i = 1; i < this.chain; i++){
+      let currentBlock = this.chain[i];
+      let previousBlock = this.chain[i - 1];
+      if (currentBlock.hash != currentBlock.calculateHash()){
+        console.log("Current Block 's Hashes not equal");
+        return false;
+      }
+      if (previousBlock.hash != currentBlock.preHash){
+        console.log("Previous Block 's Hashes not equal");
+        return false;
+      }
+    }
+    return true;
+  }
+
+  printChain(){
+    this.chain.forEach(b => {
+      console.log(b);
+    })
+  }
+
 }
 
-module.exports = Block;
+module.exports = BlockChain;
+
+// let blockchain = new BlockChain();
+// blockchain.addBlock("duc","Hello World");
+// blockchain.addBlock("dai","Hello");
+// blockchain.addBlock("dong","Hi");
+// blockchain.printChain();
+// if (blockchain.isChainValid()) console.log("\nBlock chain is valid");

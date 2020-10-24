@@ -16,3 +16,7 @@ input:focus{
 .sendBtn{
   background-color: rgba(127, 255, 0, 0.3);
 }
+
+.nickname{
+  font-weight: bold;
+}
