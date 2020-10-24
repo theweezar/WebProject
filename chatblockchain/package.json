@@ -1,0 +1,25 @@
+{
+  "name": "chatblockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "asyncawait": "^3.0.0",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "mysql": "^2.18.1",
+    "socket.io": "^2.3.0"
+  }
+}

@@ -1,0 +1,35 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.mp-none{
+  margin: 0! important;
+  padding: 0! important;
+}
+
+.container-fluid{
+  height: 100%;
+}
+
+.bg{
+  background: url("../resource/Ygw3pC.jpg") no-repeat bottom;
+  background-size: cover;
+  /* z-index: -1; */
+}
+
+.glass{
+  background: rgba(34, 40, 49,0.5);
+}
+
+.nav-item{
+  color: white !important;
+  text-transform: uppercase;
+}
+
+.nav-item:hover{
+  color: black !important;
+  background: whitesmoke;
+  transition: 0.25s;
+}
