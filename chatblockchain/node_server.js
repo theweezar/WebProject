@@ -28,7 +28,7 @@ app.post("/request", (req, res) => {
 
 app.post("/addblockmsg", (req, res) => {
   chain.addBlock(req.body.userName, req.body.msg);
-  
+  res.send(chain.lastBlock());
 });
 
 // server này là để xử lý backend

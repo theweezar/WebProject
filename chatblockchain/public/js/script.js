@@ -17,13 +17,21 @@ $(function(){
     $("input#msg").val("");
   })
 
-  socket.on("SEND_MSG_TO_ALL", packet => {
-    console.log(packet);
+  socket.on("SEND_MSG_TO_ALL", data => {
+    console.log(data);
+    let time = new Date(data.timeStamp);
+    let timeStr = `${time.getDate() < 10 ? "0" + time.getDate():time.getDate()}-${time.getMonth()+1 < 10 ? "0"+time.getMonth()+1:time.getMonth()+1}-${time.getFullYear()} ${time.getHours()}:${time.getMinutes() < 10 ? "0"+time.getMinutes() : time.getMinutes()}`;
     $("#msgBox").append(
       `<div class="other">
         <p>
-          <span class="nickname">[ ${packet.userName} ]</span> ====> 
-          ${packet.msg}
+          <span class="nickname">
+            [ ${data.packet.userName} ]
+          </span> 
+          <span class="time">
+            [ ${timeStr} ]
+          </span>
+          ====> 
+          ${data.packet.msg}
         </p>
       </div>`
     )

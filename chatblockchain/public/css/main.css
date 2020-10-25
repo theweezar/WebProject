@@ -20,3 +20,8 @@ input:focus{
 .nickname{
   font-weight: bold;
 }
+
+.time{
+  color: coral;
+  font-style: italic;
+}

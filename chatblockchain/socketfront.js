@@ -31,11 +31,14 @@ const server = app.listen(PORT,() => {
 const io = socketIO(server);
 
 io.on("connection", socket => {
-  socket.on("POST_MSG", packet => {    
+  socket.on("POST_MSG", packet => {
     axios.default.post('http://localhost:5000/addblockmsg', packet)
     .then((res) => {
       console.log(res.data);
-      // io.emit("SEND_MSG_TO_ALL");
+      io.emit("SEND_MSG_TO_ALL", {
+        packet: res.data.packet,
+        timeStamp: res.data.timeStamp
+      });
     })
     .catch((error) => {
       throw error;
