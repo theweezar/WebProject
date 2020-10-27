@@ -13,6 +13,20 @@
         My message
       </p>
     </div> --}}
+    {{#each msgList as |e i|}}
+    <div class="other">
+      <p>
+        <span class="nickname">
+          [ {{e.packet.userName}} ]
+        </span> 
+        <span class="time">
+          [ {{e.timeStr}} ]
+        </span>
+        ====> 
+        {{e.packet.msg}}
+      </p>
+    </div>
+    {{/each}}
   </div>
   <div class="input-group mb-3 my-4">
     <input id="msg" type="text" class="form-control" placeholder="=====> Message go here <=====" aria-label="Recipient's username" aria-describedby="basic-addon2">

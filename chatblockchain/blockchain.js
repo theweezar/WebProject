@@ -11,6 +11,10 @@ class BlockChain{
     return this.chain[this.chain.length - 1];
   }
 
+  getChain(){
+    return this.chain;
+  }
+
   addBlock(userName = "", msg = ""){
     let hash = this.chain.length == 0 ? "0" : this.lastBlock().hash;
     let block = new Block({

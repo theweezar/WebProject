@@ -26,6 +26,10 @@ app.post("/request", (req, res) => {
   res.send("requested");
 })
 
+app.post("/getallmsg", (req, res) => {
+  res.send(chain.getChain());
+})
+
 app.post("/addblockmsg", (req, res) => {
   chain.addBlock(req.body.userName, req.body.msg);
   res.send(chain.lastBlock());

@@ -20,13 +20,20 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
 app.get("/",(req,res) => {
-  res.render("room");
+  axios.default.post('http://localhost:5000/getallmsg')
+  .then(r => {
+    console.log(r.data);
+    res.render("room", {msgList: r.data});
+  })
+  .catch(err => {
+    throw err;
+  })
 });
 
 // server này là để load front end
 const server = app.listen(PORT,() => {
   console.log(`Server is running on PORT: ${PORT} !!!!`);
-})
+});
 
 const io = socketIO(server);
 
@@ -42,6 +49,6 @@ io.on("connection", socket => {
     })
     .catch((error) => {
       throw error;
-    })
+    });
   });
 });
