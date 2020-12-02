@@ -1,0 +1,33 @@
+<div class="wallpp"></div>
+<div class="account-page">
+  <div class="title-1">Register</div>
+  <form action="./register" method="POST">
+    <div class="ip-g">
+      <div class="title-2">Username</div>
+      <input required="required" class="ip" placeholder="Username" id="" name="username"/>
+    </div>
+    <div class="ip-g">
+      <div class="title-2">Password</div>
+      <input required="required" type="password" class="ip" pattern="[a-zA-Z0-9]{8,}" placeholder="Password[a-zA-Z0-9]{8,}" id="" name="password"/>
+    </div>
+    <div class="ip-g">
+      <div class="title-2">Re-Password</div>
+      <input required="required" type="password" class="ip" placeholder="Type your password again" id="" name="repassword"/>
+    </div>
+    <div class="ip-g center">
+      <button type="submit">Register</button>
+    </div>
+    <table class="option">
+      <tr>
+        {{!-- <td><a href="./forgetpw.htm">*Forget password</a></td> --}}
+        <td><a href="./login">Login</a></td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+{{#if this.error}}
+<script>
+  alert("{{this.msg}}");
+</script>
+{{/if}}

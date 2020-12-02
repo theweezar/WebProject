@@ -6,12 +6,21 @@ $(function(){
     console.log("Connected to server");
   })
 
+  function updateScroll(){
+    var element = document.getElementById("msgBox");
+    element.scrollTop = element.scrollHeight;
+  }
+
   $("#sendBtn").click(e => {
     // console.log($("input#msg").val());
-    if ($("input#msg").val().trim().length != 0){
-      socket.emit("POST_MSG",{
-        userName:"anonymous",
-        msg: $("input#msg").val()
+    const msg = $("input#msg").val().trim();
+    if (msg.length != 0){
+      if (msg.match(/(<script>)[\w+|\W+]+(<\/script>)/g) != null){
+        alert("XSS Attack is detected");
+      }
+      else socket.emit("POST_MSG",{
+        userName: USERNAME,
+        msg: msg
       });
     }
     $("input#msg").val("");
@@ -25,17 +34,20 @@ $(function(){
       `<div class="other">
         <p>
           <span class="nickname">
-            [ ${data.packet.userName} ]
+            [${data.packet.userName}]
           </span> 
           <span class="time">
-            [ ${timeStr} ]
+            [${timeStr}]
           </span>
-          ====> 
+          <div>
+          ===> 
           ${data.packet.msg}
+          </div>
         </p>
       </div>`
-    )
+    );
+    updateScroll();
   });
 
-
+  updateScroll();
 });

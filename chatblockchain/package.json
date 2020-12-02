@@ -14,7 +14,7 @@
     "nodemon": "^2.0.6"
   },
   "dependencies": {
-    "asyncawait": "^3.0.0",
+    "address": "^1.1.2",
     "axios": "^0.21.0",
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
@@ -23,6 +23,7 @@
     "express-session": "^1.17.1",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.1",
+    "nodejs-captcha": "0.0.4",
     "socket.io": "^2.3.0"
   }
 }

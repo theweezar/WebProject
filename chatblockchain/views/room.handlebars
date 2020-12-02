@@ -1,6 +1,6 @@
 
 <div class="container h-100 p-4">
-  <div id="msgBox" class="msg-screen h-75 bg-light-yellow p-4">
+  <div id="msgBox" class="msg-screen h-75 bg-light-blue p-4">
     {{!-- <div class="other">
       <p>
         <span class="nickname">[ Name ]</span> ====> 
@@ -14,16 +14,18 @@
       </p>
     </div> --}}
     {{#each msgList as |e i|}}
-    <div class="other">
+    <div class="message">
       <p>
         <span class="nickname">
-          [ {{e.packet.userName}} ]
+          [{{e.packet.userName}}]
         </span> 
         <span class="time">
-          [ {{e.timeStr}} ]
+          [{{e.timeStr}}]
         </span>
-        ====> 
+        <div>
+          ===> 
         {{e.packet.msg}}
+        </div>
       </p>
     </div>
     {{/each}}
@@ -35,3 +37,8 @@
     </div>
   </div>
 </div>
+<script>
+  const USERNAME = "{{username}}"
+</script>
+
+<script src="/js/script.js"></script>
