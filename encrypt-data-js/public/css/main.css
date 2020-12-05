@@ -1,0 +1,74 @@
+html, body{
+  height: 100%;
+  background-color:whitesmoke;
+}
+
+button:focus,
+input:focus,
+select:focus{
+  outline: none! important;
+  box-shadow: none! important;
+}
+
+.title{
+  font-family: "consolas";
+  font-size: 30px;
+}
+
+.contain-file{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 420px;
+  height: 480px;
+  border: 2px solid black;
+}
+
+.preview-file{
+  width: 420px;
+  height: 480px;
+  border: 2px solid black;
+}
+
+.just-a-btn{
+  border: 2px solid black;
+  font-family: "consolas";
+}
+
+.chooseBtn{
+  background-color:#03c04a;
+}
+
+.execBtn{
+  background-color: #ff2400;
+}
+
+.uploadBtn{
+  background-color: #ffe87c;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+option{
+  font-family: "consolas";
+}
+
+input#password{
+  border: 2px solid black;
+}
+
+.lb-1{
+  width: 80px;
+}
+
+.preview-item{
+  width: auto;
+  height: 360px;
+}
