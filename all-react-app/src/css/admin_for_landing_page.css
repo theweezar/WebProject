@@ -1,0 +1,60 @@
+
+.pointer{
+  cursor: pointer;
+}
+
+input:focus
+{
+  box-shadow: none!important;
+  outline: none!important;
+}
+
+.no-margin{
+  margin: 0;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+.sidebar{
+  min-height: 100vh;
+  width: 25rem;
+}
+
+.brand, .lead{
+  font-size: 2.2rem
+}
+
+.sidebar-divider{
+  border-top: 1px solid #262626;
+}
+
+ul#sidebar .nav-item{
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.content-wrapper{
+  width: 100%;
+}
+
+.dropdown-bar{
+  width: 200px;
+  right: 0;
+}
+
+.my-dropdown-item{
+  font-size: 18px;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.card-header{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.z-index{
+  z-index: -1;
+}
