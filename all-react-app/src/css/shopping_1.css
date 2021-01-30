@@ -1,0 +1,85 @@
+html, body{
+  padding: 0;
+  margin: 0;
+}
+
+.row{
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid{
+  min-height: 100vh;
+}
+
+#repo-menu{
+  right: 0;
+}
+
+.nav-link{
+  color: gray;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2vw;
+  margin: 0 15px 0 15px;
+}
+
+.brand{
+  text-align: center;
+}
+
+.active{
+  color: black;
+  border-bottom: 3px solid black;
+}
+
+.m-0{
+  margin: 0;
+}
+
+.p-0{
+  padding: 0;
+}
+
+.nav-link:hover{
+  color: black;
+}
+
+.nav-1 li{
+  width: 150px;
+}
+
+.overflow{
+  overflow: scroll;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.fa-shopping-cart{
+  font-size: 20px;
+}
+
+.slogan-section{
+  min-height: 80vh;
+}
+
+.slogan{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.z-1{
+  z-index: -1;
+}
+
+@media only screen and (max-width: 576px) {
+  .nav-link,.toggle{
+    font-size: 20px;
+  }
+  .brand{
+    text-align: left;
+  }
+
+}
