@@ -12,10 +12,6 @@ html, body{
   min-height: 100vh;
 }
 
-#repo-menu{
-  right: 0;
-}
-
 .nav-link{
   color: gray;
   font-family: 'Times New Roman', Times, serif;
@@ -38,6 +34,15 @@ html, body{
 
 .p-0{
   padding: 0;
+}
+
+.logo{
+  width: 150px!important;
+}
+
+img{
+  width: 100%;
+  height: auto;
 }
 
 .nav-link:hover{
@@ -74,12 +79,64 @@ html, body{
   z-index: -1;
 }
 
+.z-100{
+  z-index: 100;
+}
+
+.intro_prod{
+  width: 600px;
+}
+
+.item1{grid-area: item1;}
+.item2{grid-area: item2;}
+.item3{grid-area: item3;}
+.item4{grid-area: item4;}
+
+.grid{
+  display: grid;
+  width: 75%;
+  grid-template-areas: 
+    "item1 item1 item1 item1 item1 item2 item2 item2 "
+    "item1 item1 item1 item1 item1 item2 item2 item2 "
+    "item1 item1 item1 item1 item1 item2 item2 item2 "
+    "item1 item1 item1 item1 item1 item3 item3 item3 "
+    "item1 item1 item1 item1 item1 item3 item3 item3 "
+    "item1 item1 item1 item1 item1 item3 item3 item3 "
+    "item4 item4 item4 item4 item4 item4 item4 item4 "
+    "item4 item4 item4 item4 item4 item4 item4 item4 "
+    "item4 item4 item4 item4 item4 item4 item4 item4 "
+    "item4 item4 item4 item4 item4 item4 item4 item4 ";
+    grid-gap: 5px;
+}
+
+
 @media only screen and (max-width: 576px) {
   .nav-link,.toggle{
     font-size: 20px;
   }
+
   .brand{
     text-align: left;
   }
 
+  .grid{
+    display: grid;
+    width: 100%;
+    grid-template-areas: 
+      "item1 item1 item1 item1 item1 item1"
+      "item1 item1 item1 item1 item1 item1"
+      "item1 item1 item1 item1 item1 item1"
+      "item1 item1 item1 item1 item1 item1"
+      "item1 item1 item1 item1 item1 item1"
+      "item1 item1 item1 item1 item1 item1"
+      "item2 item2 item2 item3 item3 item3"
+      "item2 item2 item2 item3 item3 item3"
+      "item2 item2 item2 item3 item3 item3"
+      "item4 item4 item4 item4 item4 item4"
+      "item4 item4 item4 item4 item4 item4"
+      "item4 item4 item4 item4 item4 item4"
+      "item4 item4 item4 item4 item4 item4"
+      ;
+      grid-gap: 5px;
+  }
 }
