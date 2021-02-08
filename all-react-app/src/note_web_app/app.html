@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Note</title>
+  <link rel="stylesheet" href="../css/note_web_app.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="." type="image/x-icon">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="app row position-relative">
+      <div class="col-lg-2 col-md-2 border-right sidebar p-0">
+        
+        <div class="brand p-4 pointer">
+          <div class="py-3">
+            .NoteDesign
+          </div>
+        </div>
+
+        <ul class="nav flex-column pt-2">
+          <li class="nav-item px-4 py-3 pointer active">
+            <i class="fa fa-sticky-note" aria-hidden="true"></i>
+            <span>All notes</span>
+          </li>
+          <li class="nav-item px-4 py-3 pointer">
+            <a href="#">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <span>Sort by date</span>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+      <div class="col-lg-10 col-md-10 bg-light">
+
+        <div class="topbar py-4 w-100">
+          <ul class="nav justify-content-end">
+            <li class="nav-item d-flex align-items-center w-75">
+              <div class="search-box border-bottom border-dark px-1">
+                <input type="text" name="search" id="search" placeholder="Search note">
+                <label for="search"><i class="fa fa-search" aria-hidden="true"></i></label>
+              </div>
+            </li>
+            <li class="nav-item px-4 d-flex justify-content-center align-items-center">
+              <i class="fa fa-bell" aria-hidden="true"></i>
+            </li>
+            <li class="nav-item account-box mt-2">
+              <ul id="dropdown-btn"
+              class="nav justify-content-center rounded align-items-center py-1 pointer">
+                <li class="nav-item px-2">
+                  <div>Minh Duc</div>
+                </li>
+                <li class="nav-item px-2">
+                  <img src="../img/riven.jpg" width="35" alt="">
+                </li>
+              </ul>
+              <div class="position-relative my-dropdown justify-content-end w-100 mt-2 d-flex">
+                <ul id="dropdown-list" class="nav flex-column position-absolute bg-white w-100 py-1 px-3 rounded border d-none">
+                  <li class="nav-item p-1 pointer">
+                    Account
+                  </li>
+                  <li class="nav-item p-1 pointer">
+                    Logout
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content position-relative">
+          <div class="sortbar"></div>
+          <div class="notelist">
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>

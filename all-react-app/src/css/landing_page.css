@@ -8,6 +8,11 @@ html, body{
   padding: 0;
 }
 
+.font{
+  font-family: "PatrickHand";
+  font-size: 50px;
+}
+
 .p-0{
   padding: 0;
 }
