@@ -145,3 +145,11 @@ button:focus,
   overflow-x: hidden;
   text-decoration: none;
 }
+
+@media only screen and (max-width: 576px) {
+  .editor{
+    width: 90%;
+    display: grid;
+    grid-template-rows: 10% 90%;
+  }
+}
