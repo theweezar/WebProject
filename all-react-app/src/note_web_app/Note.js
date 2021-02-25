@@ -10,6 +10,7 @@ class Note extends React.Component{
     }
     this.checkHandle = this.checkHandle.bind(this)
     this.pinHandle = this.pinHandle.bind(this)
+    this.openEditorHandle = this.openEditorHandle.bind(this)
   }
 
   checkHandle(){
@@ -22,6 +23,10 @@ class Note extends React.Component{
     this.setState(state => ({
       isPin: !state.isPin
     }))
+  }
+
+  openEditorHandle(el){
+    this.props.openEditorHandle(el.target.querySelector("#content").innerHTML)
   }
 
   render(){
@@ -38,11 +43,11 @@ class Note extends React.Component{
               <i className={!this.state.isPin ? 'fa fa-circle-o':'fa fa-circle'} aria-hidden="true"></i>
             </div>
           </div>
-          <div className="p-3">
+          <div onClick={this.openEditorHandle} className="p-3 h-100">
             <div className="date">
               30 July, 2015
             </div>
-            <div className="content">
+            <div id="content" className="content">
               <b>The Angel Fall</b>
               <br/>
               The brightest star

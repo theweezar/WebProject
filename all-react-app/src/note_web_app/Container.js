@@ -42,7 +42,7 @@ class Body extends React.Component{
   render(){
     return(
       <div className="row">
-        <Note />
+        <Note openEditorHandle={this.props.openEditorHandle}/>
       </div>
     )
   }
@@ -56,7 +56,7 @@ class Container extends React.Component{
       <div className="container py-4">
         <Header/>
         <SortBar/>
-        <Body/>
+        <Body openEditorHandle={this.props.openEditorHandle}/>
       </div>
     )
   }

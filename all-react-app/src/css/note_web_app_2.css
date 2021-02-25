@@ -87,7 +87,7 @@ div:focus,
 
 .content{
   font-size: 0.9rem;
-  font-weight: lighter;
+  /* font-weight: lighter; */
 }
 
 .top-btn{

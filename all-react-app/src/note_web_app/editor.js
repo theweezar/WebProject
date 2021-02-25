@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class Editor extends React.Component{
 
   constructor(props){
@@ -8,16 +9,22 @@ class Editor extends React.Component{
       content: ''
     }
     this.contentHandle = this.contentHandle.bind(this)
+    this.closeEditorHandle = this.closeEditorHandle.bind(this)
+    
   }
 
   contentHandle(el){
     
   }
 
+  closeEditorHandle(){
+    this.props.closeEditorHandle()
+  }
+
   render(){
     return(
-      <div className="position-relative">
-        <div id="closenote-area" className="overview position-absolute z-100"></div>
+      <div className={!this.props.isOpenEditor ? 'position-relative d-none':'position-relative'}>
+        <div id="closenote-area" onClick={this.closeEditorHandle} className="overview position-absolute z-100"></div>
         <div id="editor" className="editor rounded z-100 bg-white border position-absolute">
 
           <div className="editor-nav shadow-sm d-flex align-items-center">
@@ -53,7 +60,7 @@ class Editor extends React.Component{
           </div>
 
           <div className="editor-content py-2 px-3" id="content-note" 
-          contentEditable={true} onInput={this.contentHandle}>
+          contentEditable={true} dangerouslySetInnerHTML={{__html: this.props.content}} onInput={this.contentHandle}>
             
           </div>
 
