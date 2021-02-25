@@ -1,4 +1,5 @@
 import React from 'react'
+import Note from './Note'
 
 function Header(){
   return(
@@ -33,40 +34,15 @@ function SortBar(){
 
 class Body extends React.Component{
 
-  constructor(props){
-    super(props)
-    this.checkHandle = this.checkHandle.bind(this)
-  }
-
-  checkHandle(){
-    console.log('check')
-  }
+  // constructor(props){
+  //   super(props)
+  //   this.checkHandle = this.checkHandle.bind(this)
+  // }
 
   render(){
     return(
       <div className="row">
-        <div className="col-lg-3 d-flex justify-content-center">
-          <div className="note shadow-sm bg-white">
-            <div className="top-btn position-relative">
-              <div id="check-btn" onClick={this.checkHandle} className="check-btn position-absolute">
-                <i className="fa fa-check-circle-o" aria-hidden="true"></i>
-              </div>
-              <div id="pin-btn" className="pin-btn position-absolute">
-                <i className="fa fa-circle-o" aria-hidden="true"></i>
-              </div>
-            </div>
-            <div className="p-3">
-              <div className="date">
-                30 July, 2015
-              </div>
-              <div className="content">
-                <b>The Angel Fall</b>
-                <br/>
-                The brightest star
-              </div>
-            </div>
-          </div>
-        </div>
+        <Note />
       </div>
     )
   }
