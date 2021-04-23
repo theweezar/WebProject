@@ -1,24 +1,34 @@
 import React from 'react'
 
-
 class Editor extends React.Component{
 
   constructor(props){
     super(props)
     this.state = {
-      content: ''
+      content: '',
+      edited: false
     }
-    this.contentHandle = this.contentHandle.bind(this)
+    this.editContentHandle = this.editContentHandle.bind(this)
     this.closeEditorHandle = this.closeEditorHandle.bind(this)
-    
+    this.onloadHandle = this.onloadHandle(this)
   }
-
-  contentHandle(el){
-    
+  
+  editContentHandle(el){
+    this.setState({
+      content: el.target.innerHTML,
+      edited: true
+    })
   }
 
   closeEditorHandle(){
-    this.props.closeEditorHandle()
+    // Nếu content vừa import vào editor bị thay đổi thì nó sẽ lấy cái dữ liệu mới vừa thay đổi
+    if (this.state.edited) this.props.closeEditorHandle(this.state.content)
+    // còn ko thì nó sẽ lấy cái dữ liệu đầu vào là props.content
+    else this.props.closeEditorHandle(this.props.content)
+  }
+
+  onloadHandle(){
+    // console.log(this.props)
   }
 
   render(){
@@ -60,7 +70,8 @@ class Editor extends React.Component{
           </div>
 
           <div className="editor-content py-2 px-3" id="content-note" 
-          contentEditable={true} dangerouslySetInnerHTML={{__html: this.props.content}} onInput={this.contentHandle}>
+          contentEditable={true} dangerouslySetInnerHTML={{__html: this.props.content}}
+          onInput={this.editContentHandle}>
             
           </div>
 

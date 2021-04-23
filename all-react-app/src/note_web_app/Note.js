@@ -6,7 +6,9 @@ class Note extends React.Component{
     super(props)
     this.state = {
       isCheck: false,
-      isPin: false
+      isPin: false,
+      date: props.date,
+      content: props.content
     }
     this.checkHandle = this.checkHandle.bind(this)
     this.pinHandle = this.pinHandle.bind(this)
@@ -25,8 +27,8 @@ class Note extends React.Component{
     }))
   }
 
-  openEditorHandle(el){
-    this.props.openEditorHandle(el.target.querySelector("#content").innerHTML)
+  openEditorHandle(){
+    this.props.openEditorHandle(this.props.id, this.state.content)
   }
 
   render(){
@@ -45,12 +47,10 @@ class Note extends React.Component{
           </div>
           <div onClick={this.openEditorHandle} className="p-3 h-100">
             <div className="date">
-              30 July, 2015
+              {this.state.date}
             </div>
-            <div id="content" className="content">
-              <b>The Angel Fall</b>
-              <br/>
-              The brightest star
+            <div id="content" className="content" dangerouslySetInnerHTML={{__html: this.state.content}}>
+              
             </div>
           </div>
         </div>

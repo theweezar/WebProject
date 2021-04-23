@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "Camphor_W01_Regular";
+  src: url("../fonts/Camphor_W01_Regular.ttf");
+}
+@font-face {
+  font-family: "Eina01-Bold";
+  src: url("../fonts/Eina01-Bold.ttf");
+}
+@font-face {
+  font-family: "Eina01-SemiBold";
+  src: url("../fonts/Eina01-SemiBold.otf");
+}
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.top-bar {
+  background: url("../images/topbar.png");
+  font-weight: bold;
+  font-size: 12px;
+  font-family: "Eina01-Bold";
+}
+.top-bar .close-topbar-btn {
+  top: 0;
+  right: 5%;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.m-0 {
+  padding: 0 !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.first-nav, .second-nav {
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "Camphor_W01_Regular";
+}
+.first-nav a, .second-nav a {
+  color: black;
+}
+
+.second-nav .nav-link img {
+  width: 15px;
+  height: auto;
+}
+
+.content-container {
+  margin-top: 65px;
+  font-weight: bold;
+}
+.content-container .content-title-big {
+  font-family: "Eina01-Bold";
+  font-size: 45px;
+}
+.content-container .content-title-small {
+  font-family: "Eina01-Bold";
+  font-size: 30px;
+}
+.content-container .content {
+  font-family: "Camphor_W01_Regular";
+  font-size: 15px;
+}
+.content-container .content-container-bottom {
+  transform: translateX(-17%);
+  padding-left: 10%;
+}
+
+.footer {
+  background-color: #272727;
+}
+
+/*# sourceMappingURL=main.css.map */

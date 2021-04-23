@@ -11,33 +11,82 @@ class NoteApp extends React.Component{
     super(props)
     this.state = {
       isOpenEditor: false,
-      content: null
+      editingId: undefined,
+      content: null,
+      noteList: [
+        {
+          date: '30 July, 2015',
+          content: `
+            <b>The Angel Fall</b>
+            <br>
+            The brightest star 1
+          `
+        },
+        {
+          date: '30 July, 2015',
+          content: `
+            <b>The Angel Fall</b>
+            <br>
+            The brightest star 2
+          `
+        },
+        {
+          date: '30 July, 2015',
+          content: `
+            <b>The Angel Fall</b>
+            <br>
+            The brightest star 3
+          `
+        },
+        {
+          date: '30 July, 2015',
+          content: `
+            <b>The Angel Fall</b>
+            <br>
+            The brightest star 4
+          `
+        },
+        {
+          date: '30 July, 2015',
+          content: `
+            <b>The Angel Fall</b>
+            <br>
+            The brightest star 5
+          `
+        }
+      ]
     }
     this.openEditorHandle = this.openEditorHandle.bind(this)
     this.closeEditorHandle = this.closeEditorHandle.bind(this)
   }
 
-  openEditorHandle(content){
-    console.log('openEditor in NoteApp with content\n',content)
+  openEditorHandle(id, content){
+    console.log('openEditor: \n',content)
     this.setState({
       isOpenEditor: true,
+      editingId: id,
       content: content
     })
   }
 
-  closeEditorHandle(){
-    console.log('closed editor')
+  closeEditorHandle(content){
+    console.log('closeEditor: \n',content)
+    const newNodeList = this.state.noteList
+    newNodeList[this.state.editingId].content = content
     this.setState({
       isOpenEditor: false,
-      content: null
+      editingId: undefined,
+      content: null,
+      nodeList: newNodeList
     })
+
   }
 
   render(){
     return(
       <div>
         <Editor closeEditorHandle={this.closeEditorHandle} content={this.state.content} isOpenEditor={this.state.isOpenEditor}/>
-        <Container openEditorHandle={this.openEditorHandle}/>
+        <Container noteList={this.state.noteList} openEditorHandle={this.openEditorHandle}/>
       </div>
     )
   }

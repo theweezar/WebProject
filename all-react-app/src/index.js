@@ -12,6 +12,7 @@ import './css/font-awesome-4.7.0/css/font-awesome.min.css'
 // import Tutorial from './tutorial/Tutorial';
 // import Admin from './admin_for_landing_page/Admin'
 import NoteApp from './note_web_app/NoteApp'
+// import NoteApp from './note_web_app/NoteApp_2'
 /**
  * File index.js sẽ chạy và được render bên trong file index.html trong thư mục public
  * nên là không được xóa file index.html mà chỉ được thay đổi dữ liệu bên trong
@@ -24,6 +25,7 @@ function Index(){
     <React.StrictMode>
       {/* <Tutorial /> */}
       {/* <Admin /> */}
+      {/* <NoteApp /> */}
       <NoteApp />
     </React.StrictMode>
   )
