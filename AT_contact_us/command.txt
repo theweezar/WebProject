@@ -1,5 +1,8 @@
 Compile sass:
-| sass -w main.sass:main.css sass:css
+| sass -w sass:css
 
-Dạ, cho em hỏi là mình nên code riêng ra 2 file .html (1 cho desktop, 1 cho mobile) 
-Hay là mình chỉ nên code đúng 1 file html rồi add css vào cho nó tự responsive ạ ?
+feature/HoangPhanMinhDuc-contact-page
+
+Just neet to write css for min-width:
+| extra large - 1200px (desktop)
+| small - 576px (phone, tablet)

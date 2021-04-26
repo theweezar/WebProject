@@ -1,3 +1,4 @@
+@import "../css/bootstrap.min.css"
 $top-bar-bg: "../images/topbar.png"
 
 @font-face 
@@ -12,15 +13,15 @@ $top-bar-bg: "../images/topbar.png"
     font-family: "Eina01-SemiBold"
     src: url("../fonts/Eina01-SemiBold.otf")
 
-    
 html
     margin: 0
     padding: 0
 
 .top-bar
-    background: url($top-bar-bg)
+    background: url($top-bar-bg) no-repeat
+    background-size: cover
     font-weight: bold
-    font-size: 12px
+    font-size: 0.6rem
     font-family: "Eina01-Bold"
     .close-topbar-btn
         top: 0
@@ -36,20 +37,22 @@ html
     cursor: pointer
 
 .first-nav, .second-nav
-    font-size: 12px
+    font-size: 1rem
     font-weight: bold
     font-family: "Camphor_W01_Regular"
     a
         color: black
 
+.text-underline
+    text-decoration: underline
+
 .second-nav
     .nav-link
         img
-            width: 15px
+            width: 1.1rem
             height: auto
 
 .content-container
-    margin-top: 65px
     font-weight: bold
     .content-title-big
         font-family: "Eina01-Bold"
@@ -60,9 +63,140 @@ html
     .content
         font-family: "Camphor_W01_Regular"
         font-size: 15px
+    .content-container-bottom, .content-container-top
+        padding: 0 10%
     .content-container-bottom
-        transform: translateX(-17%)
-        padding-left: 10%
+        transform: translateY(-10%)
+        margin: 0 1rem
 
+$footer-pm-y: 0.8rem
+$footer-pm-x: 0.5rem
 .footer
-    background-color: #272727
+    font-family: "Eina01-SemiBold"
+    background: #f8f9fa
+    .footer-nav
+        background-color: whitesmoke
+        font-size: 15px
+        .col-12
+            padding: 0 $footer-pm-x
+        .title
+            color: black
+        .nav
+            a
+                text-decoration: none
+                color: gray
+        .footer-plus-icon
+            right: 0
+            top: 0
+            color: gray
+    .footer-social-nav
+        background-color: whitesmoke
+        color: gray
+        .nav-item
+            font-size: 1.5rem
+            margin: 0 $footer-pm-x
+            cursor: pointer
+    .footer-divider
+        width: 100%
+        height: 0
+        border-top: 1px solid gray
+    .footer-right-container
+        background-color: whitesmoke
+        color: black
+        font-size: 0.8rem
+        padding: $footer-pm-y 0
+        span
+            cursor: pointer
+            margin: 0 $footer-pm-x
+        .footer-right
+            padding: $footer-pm-y 0
+        .footer-right-nation
+            padding: $footer-pm-y $footer-pm-x
+        .footer-credit-card-container
+            padding: $footer-pm-y 0
+            .footer-credit-card
+                margin: 0 $footer-pm-x
+                width: 2rem
+                height: auto
+                border: 1px solid gray
+                border-radius: 0.2rem
+                background-color: white
+        .footer-copyright
+            padding: $footer-pm-y $footer-pm-x
+
+
+// Responsive here
+
+// $sm: 576px
+// $md: 768px
+// $lg: 992px
+
+// for desktop css
+
+$exlg: 1200px
+
+@media (min-width: $exlg)
+    .top-bar
+        font-size:0.8rem
+    .first-nav, .second-nav
+        font-size: 0.85rem
+    .second-nav
+        .nav-link
+            img
+                width: 0.9rem
+                height: auto
+    .content-container
+        padding: 0 5rem
+        .content-container-word
+            margin-top: 65px
+        .content-container-top
+            padding: 0
+        .content-title-big
+            font-size: 3.4rem
+            // font-size: 5vw
+        .content-title-small
+            font-size: 1.75rem
+        .content
+            font-size: 0.9rem
+        .content-container-bottom
+            transform: translateX(-12.5%) translateY(0)
+            margin: 1rem 0
+            // padding: 0 2.75rem
+    .footer
+        background-color: #272727
+        margin-top: 55px
+        padding-bottom: 1.5rem
+        .footer-nav
+            background-color: transparent
+            padding: 1.5rem 0
+            font-family: "Eina01-SemiBold"
+            font-size: 15px
+            .title
+                color: white
+                margin-bottom: 1.5rem
+            .nav
+                a
+                    text-decoration: none
+                    color: gray
+        .footer-social-nav
+            background: transparent
+            margin-top: 55px
+            color: gray
+            .nav-item
+                cursor: pointer
+        .footer-divider
+            width: 100%
+            height: 0
+            border-top: 1px solid white
+        .footer-right-container
+            background: #272727
+            padding: 0
+            .footer-right
+                padding: 0
+                background: transparent
+                color: gray
+            .footer-right-nation
+                padding: 0
+                color: gray
+                text-align: right
+    
