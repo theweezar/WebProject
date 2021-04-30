@@ -1,0 +1,15 @@
+$top-bar-bg: "../images/topbar.png";
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$footer-pm-y: 0.8rem;
+$footer-pm-x: 0.5rem;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);

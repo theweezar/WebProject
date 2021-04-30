@@ -1,0 +1,18 @@
+.top-bar{
+    // background: url($top-bar-bg) no-repeat;
+    background: linear-gradient(to right, rgb(255,192,14) , rgb(129,193,65));
+    background-size: cover;
+    font-weight: bold;
+    font-size: 0.7rem;
+    font-family: "Eina01-Bold";
+    .close-topbar-btn{
+        top: 0;
+        right: 5%;
+    }
+}
+
+@media (min-width: $xl){
+    .top-bar{
+        font-size: 1vw;
+    }
+}

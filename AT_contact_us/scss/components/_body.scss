@@ -1,0 +1,52 @@
+.content-container{
+    font-weight: bold;
+    .content-title-big{
+        font-family: "Eina01-Bold";
+        font-size: 45px;
+    }
+    .content-title-small{
+        font-family: "Eina01-Bold";
+        font-size: 30px;
+    }
+    .content{
+        font-family: "Camphor_W01_Regular";
+        font-size: 15px;
+        a{
+            color: black;
+        }
+    }
+    .content-container-bottom, .content-container-top{
+        padding: 0 10%;
+    }
+    .content-container-bottom{
+        transform: translateY(-10%);
+        margin: 0 1rem;
+    }
+}
+
+@media (min-width: $xl){
+    .content-container{
+        padding: 0 7.7rem;
+        .content-container-word{
+            margin-top: 4.5vw;
+        }
+        .content-container-top{
+            padding: 0;
+        }
+        .content-title-big{
+            // font-size: 3.4rem
+            font-size: 3.8vw;
+        }
+        .content-title-small{
+            font-size: 2vw;
+        }
+        .content{
+            font-size: 1vw;
+        }
+        .content-container-bottom{
+            transform: translateX(-4vw) translateY(0);
+            margin: 2vw 0;
+            // padding: 2.75rem 0
+        }
+    }
+}
