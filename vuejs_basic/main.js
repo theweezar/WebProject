@@ -100,4 +100,20 @@ $(function(){
       rawHTML: "<span class='text-danger'>This is red</span>"
     }
   })
+
+  var fetchJson = new Vue({
+    el:'#fetch-json',
+    methods: {
+      async getJson(){
+        const res = await fetch('https://randomuser.me/api/');
+        const { results } = await res.json();
+        console.log('{result}',results);
+        let name = results[0];
+        console.log(name);
+      }
+    },
+    created(){
+      this.getJson();
+    }
+  })
 });
